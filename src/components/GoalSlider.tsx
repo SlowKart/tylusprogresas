@@ -20,8 +20,8 @@ export function GoalSlider({
 }) {
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <div className="text-lg font-semibold mb-2 text-[#2F3036]">{label}</div>
-      <div className="text-center text-[#1F2024] font-sans font-mono text-lg mb-2">
+      <div className="text-lg font-semibold mb-2 text-primary">{label}</div>
+      <div className="text-center text-muted font-sans font-mono text-lg mb-2">
         {formatValue(value)}
       </div>
       <Slider
@@ -31,7 +31,7 @@ export function GoalSlider({
         step={step}
         onValueChange={([v]) => onChange(v)}
         aria-label={label}
-        className="w-full max-w-[278px]"
+        className="w-full max-w-slider"
       />
     </div>
   );

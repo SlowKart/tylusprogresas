@@ -14,7 +14,7 @@ export function SelectDistanceStep({
 }) {
   return (
     <StepLayout title="Select Your Distance" onBack={onBack}>
-      <div className="flex flex-col gap-6 w-full max-w-[393px]">
+      <div className="flex flex-col gap-form w-full max-w-card">
         {distances.map((d) => (
           <Button
             key={d.value}

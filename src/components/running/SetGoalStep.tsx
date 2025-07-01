@@ -29,7 +29,7 @@ export function SetGoalStep({
   return (
     <StepLayout title="Set Your Goal" onBack={onBack}>
       <form
-        className="flex flex-col gap-6 w-full max-w-[393px] p-0"
+        className="flex flex-col gap-form w-full max-w-card p-0"
         onSubmit={(e) => {
           e.preventDefault();
           onContinue();
@@ -56,7 +56,7 @@ export function SetGoalStep({
         />
         <Button
           type="submit"
-          className="w-full mt-4"
+          className="w-full mt-form-btn"
           disabled={selected !== "none" && finishTime === null}
         >
           Continue
