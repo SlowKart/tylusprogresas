@@ -23,10 +23,12 @@ export function SummaryStep({
       <StepLayout title="Random Workout" onBack={onBack}>
         <div className="bg-background shadow-md rounded-xl p-8 max-w-card w-full flex flex-col items-center">
           <div className="mb-4 text-primary text-center">
-            <b>Your workout:</b>
-            <div className="mt-2 text-muted">{randomWorkout}</div>
+            <span className="block text-xl font-bold mb-2">Your workout:</span>
+            <div className="mt-2 text-base text-foreground font-medium">
+              {randomWorkout}
+            </div>
           </div>
-          <p className="text-foreground text-center mb-2">
+          <p className="text-base text-foreground text-center leading-relaxed">
             This is a randomly generated workout. Enjoy your run!
           </p>
         </div>
@@ -35,34 +37,32 @@ export function SummaryStep({
   }
   return (
     <StepLayout title="Your Running Goal" onBack={onBack}>
-      <div className="bg-background shadow-md rounded-xl p-8 max-w-card w-full flex flex-col items-center">
-        <div className="mb-4 text-primary">
-          <div>
-            <b>Distance:</b>{" "}
-            <span className="text-foreground">
+      <div className="w-full max-w-card flex flex-col items-center p-0 gap-4">
+        <div className="mb-4 text-primary w-full">
+          <div className="flex flex-col gap-1">
+            <span className="text-xl font-bold text-center">Goal Summary</span>
+            <span className="text-base text-foreground text-center">
+              <span className="font-semibold">Distance:</span>{" "}
               {DISTANCES.find((d) => d.value === selected)?.label}
             </span>
-          </div>
-          {selected !== "none" && finishTime !== null && (
-            <>
-              <div>
-                <b>Finish time:</b>{" "}
-                <span className="text-foreground">
+            {selected !== "none" && finishTime !== null && (
+              <>
+                <span className="text-base text-foreground text-center">
+                  <span className="font-semibold">Finish time:</span>{" "}
                   {finishTime !== null ? formatTime(finishTime) : "-"}
                 </span>
-              </div>
-              <div>
-                <b>Pace:</b>{" "}
-                <span className="text-foreground">{calculatedPace}</span>
-              </div>
-            </>
-          )}
-          <div>
-            <b>Time to achieve:</b>{" "}
-            <span className="text-foreground">{goalWeeks}</span>
+                <span className="text-base text-foreground text-center">
+                  <span className="font-semibold">Pace:</span> {calculatedPace}
+                </span>
+              </>
+            )}
+            <span className="text-base text-foreground text-center">
+              <span className="font-semibold">Time to achieve:</span>{" "}
+              {goalWeeks}
+            </span>
           </div>
         </div>
-        <p className="text-foreground text-center mb-2">
+        <p className="text-base text-foreground text-center leading-relaxed">
           To reach your goal, follow a structured training plan, gradually
           increase your weekly mileage, and include a mix of easy runs,
           intervals, and long runs. Remember to rest and listen to your body.
