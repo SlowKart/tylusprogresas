@@ -24,6 +24,101 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Testing
+
+This project uses [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for comprehensive testing.
+
+### Running Tests
+
+Run all tests:
+
+```bash
+npm test
+```
+
+Run tests in watch mode (recommended during development):
+
+```bash
+npm test -- --watch
+```
+
+Run tests for a specific file:
+
+```bash
+npm test src/components/running/SummaryStep.test.tsx
+```
+
+Run tests with coverage:
+
+```bash
+npm test -- --coverage
+```
+
+### Test Structure
+
+- **Component Tests**: Located in `src/**/__tests__/` directories alongside components
+- **Utility Tests**: Located in `src/utils/__tests__/` for utility function testing
+- **Test Files**: Follow the naming convention `*.test.tsx` or `*.test.ts`
+
+### Test Coverage
+
+The test suite covers:
+
+- **UI Components**: All interactive components with user interactions
+- **Utility Functions**: All utility functions with edge cases and error conditions
+- **React Hooks**: Custom hooks using `renderHook` from React Testing Library
+- **Accessibility**: ARIA attributes and keyboard navigation
+- **Type Safety**: TypeScript types and union types
+
+### Writing Tests
+
+When adding new features, follow these testing patterns:
+
+```typescript
+// Component test example
+import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+describe("ComponentName", () => {
+  it("renders correctly", () => {
+    render(<ComponentName />);
+    expect(screen.getByText("Expected Text")).toBeInTheDocument();
+  });
+
+  it("handles user interactions", async () => {
+    const user = userEvent.setup();
+    render(<ComponentName />);
+
+    await user.click(screen.getByRole("button"));
+    expect(screen.getByText("Updated Text")).toBeInTheDocument();
+  });
+});
+```
+
+```typescript
+// Utility function test example
+import * as utils from "../utils";
+
+describe("utility function", () => {
+  it("handles normal input", () => {
+    expect(utils.functionName("input")).toBe("expected output");
+  });
+
+  it("handles edge cases", () => {
+    expect(utils.functionName("")).toBe("empty output");
+  });
+});
+```
+
+### Testing Best Practices
+
+- Use `userEvent` for user interactions (clicks, typing, etc.)
+- Test accessibility with ARIA attributes and keyboard navigation
+- Test edge cases and error conditions
+- Use descriptive test names that explain the expected behavior
+- Group related tests using `describe` blocks
+- Mock external dependencies when necessary
+
 ## Project Structure & Conventions
 
 - **Component Structure:**
