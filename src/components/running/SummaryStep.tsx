@@ -26,7 +26,7 @@ export function SummaryStep({
             <b>Your workout:</b>
             <div className="mt-2 text-muted">{randomWorkout}</div>
           </div>
-          <p className="text-muted text-center mb-2">
+          <p className="text-foreground text-center mb-2">
             This is a randomly generated workout. Enjoy your run!
           </p>
         </div>
@@ -62,7 +62,7 @@ export function SummaryStep({
             <span className="text-foreground">{goalWeeks}</span>
           </div>
         </div>
-        <p className="text-muted text-center mb-2">
+        <p className="text-foreground text-center mb-2">
           To reach your goal, follow a structured training plan, gradually
           increase your weekly mileage, and include a mix of easy runs,
           intervals, and long runs. Remember to rest and listen to your body.
