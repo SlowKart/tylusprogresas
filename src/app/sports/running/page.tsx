@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CustomSlider } from "@/components/CustomSlider";
 import { Button } from "@/components/Button";
+import { StepLayout } from "../../../components/StepLayout";
+import { GoalSlider } from "../../../components/GoalSlider";
 
 // --- Types & Constants ---
 interface DistanceOption {
@@ -52,109 +53,6 @@ function formatWeeks(weeks: number) {
   return `${weeks} weeks`;
 }
 
-// --- UI Components ---
-function BackArrow({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label="Back"
-      className="mr-2 p-2 rounded-full hover:bg-[#E8E9F1] focus:outline-none focus:ring-2 focus:ring-[#494A50]"
-      style={{ lineHeight: 0 }}
-    >
-      <svg
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        className="text-[#494A50]"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
-    </button>
-  );
-}
-
-function StepLayout({
-  children,
-  onBack,
-  title,
-}: {
-  children: ReactNode;
-  onBack?: () => void;
-  title: string;
-}) {
-  return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
-      <div className="flex items-center mb-8">
-        {onBack && <BackArrow onClick={onBack} />}
-        <h1 className="text-3xl font-bold text-[#1F2024]">{title}</h1>
-      </div>
-      {children}
-    </main>
-  );
-}
-
-function GoalSlider({
-  label,
-  value,
-  onChange,
-  min,
-  max,
-  step = 1,
-  formatValue,
-}: {
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  min: number;
-  max: number;
-  step?: number;
-  formatValue: (v: number) => string;
-}) {
-  return (
-    <div>
-      <div className="text-lg font-semibold mb-2 text-[#2F3036]">{label}</div>
-      <div className="text-center text-[#1F2024] font-sans font-mono text-lg mb-2">
-        {formatValue(value)}
-      </div>
-      <CustomSlider
-        value={value}
-        min={min}
-        max={max}
-        step={step}
-        onChange={onChange}
-        ariaLabel={label}
-      />
-    </div>
-  );
-}
-
-function DistanceButton({
-  option,
-  onSelect,
-}: {
-  option: DistanceOption;
-  onSelect: (value: string) => void;
-}) {
-  return (
-    <Button
-      variant="primary"
-      className="w-full"
-      onClick={() => onSelect(option.value)}
-      aria-label={`Select ${option.label}`}
-    >
-      {option.label}
-    </Button>
-  );
-}
-
 // --- Main Component ---
 export default function Running() {
   const router = useRouter();
@@ -162,6 +60,27 @@ export default function Running() {
   const [selected, setSelected] = useState<string | null>(null);
   const [finishTime, setFinishTime] = useState<number | null>(null);
   const [goalWeeks, setGoalWeeks] = useState(MIN_WEEKS);
+  const [randomWorkout, setRandomWorkout] = useState<string | null>(null);
+
+  // Dummy random workout generator (persisted per session)
+  function getRandomWorkout() {
+    const workouts = [
+      "Run 5km at a comfortable pace. Cool down with 10 minutes of stretching.",
+      "Interval session: 10x 400m fast with 200m walk/jog recovery.",
+      "Tempo run: 20 minutes at a steady, challenging pace.",
+      "Hill repeats: 8x 1-minute uphill, walk down for recovery.",
+      "Long run: 60 minutes at an easy pace. Hydrate well!",
+    ];
+    return workouts[Math.floor(Math.random() * workouts.length)];
+  }
+  useEffect(() => {
+    if (selected === "none" && randomWorkout === null) {
+      setRandomWorkout(getRandomWorkout());
+    }
+    if (selected !== "none") {
+      setRandomWorkout(null);
+    }
+  }, [selected]);
 
   // Snap weeks to whole months above 12 weeks
   function handleGoalWeeksChange(v: number) {
@@ -205,7 +124,11 @@ export default function Running() {
               option={d}
               onSelect={(val) => {
                 setSelected(val);
-                setStep(2);
+                if (val === "none") {
+                  setStep(3);
+                } else {
+                  setStep(2);
+                }
               }}
             />
           ))}
@@ -259,6 +182,21 @@ export default function Running() {
 
   // --- Step 3: Summary ---
   if (step === 3 && selected !== null) {
+    if (selected === "none") {
+      return (
+        <StepLayout title="Random Workout" onBack={() => setStep(1)}>
+          <div className="bg-white shadow-md rounded-xl p-8 max-w-[393px] w-full flex flex-col items-center">
+            <div className="mb-4 text-[#494A50] text-center">
+              <b>Your workout:</b>
+              <div className="mt-2 text-[#1F2024]">{randomWorkout}</div>
+            </div>
+            <p className="text-[#71727A] text-center mb-2">
+              This is a randomly generated workout. Enjoy your run!
+            </p>
+          </div>
+        </StepLayout>
+      );
+    }
     return (
       <StepLayout title="Your Running Goal" onBack={() => setStep(2)}>
         <div className="bg-white shadow-md rounded-xl p-8 max-w-[393px] w-full flex flex-col items-center">
@@ -293,4 +231,23 @@ export default function Running() {
   }
 
   return null;
+}
+
+function DistanceButton({
+  option,
+  onSelect,
+}: {
+  option: DistanceOption;
+  onSelect: (value: string) => void;
+}) {
+  return (
+    <Button
+      variant="primary"
+      className="w-full"
+      onClick={() => onSelect(option.value)}
+      aria-label={`Select ${option.label}`}
+    >
+      {option.label}
+    </Button>
+  );
 }
