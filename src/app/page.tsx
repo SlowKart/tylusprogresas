@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -11,15 +12,16 @@ export default function Home() {
           Select a Sport
         </h1>
         <div className="flex flex-col gap-8 w-full">
-          <button
-            className="bg-white shadow-md rounded-xl px-8 py-6 text-xl font-semibold text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400 transition w-full"
+          <Button
+            variant="primary"
+            className="w-full"
             onClick={() => router.push("/sports/running")}
           >
             Running
-          </button>
-          <button className="bg-white shadow-md rounded-xl px-8 py-6 text-xl font-semibold text-green-600 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-400 transition w-full">
+          </Button>
+          <Button variant="primary" className="w-full" onClick={() => {}}>
             General Fitness
-          </button>
+          </Button>
         </div>
       </div>
     </main>

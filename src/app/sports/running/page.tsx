@@ -2,6 +2,7 @@
 import React, { useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { CustomSlider } from "@/components/CustomSlider";
+import { Button } from "@/components/Button";
 
 // --- Types & Constants ---
 interface DistanceOption {
@@ -143,13 +144,14 @@ function DistanceButton({
   onSelect: (value: string) => void;
 }) {
   return (
-    <button
-      className="bg-white shadow-md rounded-xl px-8 py-4 text-lg font-semibold text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+    <Button
+      variant="primary"
+      className="w-full"
       onClick={() => onSelect(option.value)}
       aria-label={`Select ${option.label}`}
     >
       {option.label}
-    </button>
+    </Button>
   );
 }
 
@@ -242,13 +244,14 @@ export default function Running() {
             max={MAX_WEEKS}
             formatValue={formatWeeks}
           />
-          <button
+          <Button
             type="submit"
-            className="bg-black text-white rounded-full px-8 py-4 text-lg font-semibold w-full shadow-md hover:bg-gray-900 transition mt-4"
+            variant="primary"
+            className="w-full mt-4"
             disabled={selected !== "none" && finishTime === null}
           >
             Continue
-          </button>
+          </Button>
         </form>
       </StepLayout>
     );
