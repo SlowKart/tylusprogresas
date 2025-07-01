@@ -6,15 +6,17 @@ import {
   MIN_WEEKS,
   MAX_WEEKS,
   FINISH_TIME_RANGES,
-} from "../../../constants/running";
-import { formatPace, useRandomWorkout } from "../../../utils/running";
-import { SelectDistanceStep } from "../../../components/running/SelectDistanceStep";
-import { SetGoalStep } from "../../../components/running/SetGoalStep";
-import { SummaryStep } from "../../../components/running/SummaryStep";
+} from "@/constants/running";
+import { formatPace, useRandomWorkout } from "@/utils/running";
+import { SelectDistanceStep } from "@/components/running/SelectDistanceStep";
+import { SetGoalStep } from "@/components/running/SetGoalStep";
+import { SummaryStep } from "@/components/running/SummaryStep";
+
+type Step = "distance" | "goal" | "summary";
 
 export default function Running() {
   const router = useRouter();
-  const [step, setStep] = useState(1); // 1: distance, 2: goal, 3: summary
+  const [step, setStep] = useState<Step>("distance");
   const [selected, setSelected] = useState<string | null>(null);
   const [finishTime, setFinishTime] = useState<number | null>(null);
   const [goalWeeks, setGoalWeeks] = useState(MIN_WEEKS);
@@ -43,7 +45,12 @@ export default function Running() {
 
   // Calculate pace (min/km) for summary
   let calculatedPace: string | null = null;
-  if (step === 3 && selected && selected !== "none" && finishTime !== null) {
+  if (
+    step === "summary" &&
+    selected &&
+    selected !== "none" &&
+    finishTime !== null
+  ) {
     const dist = DISTANCES.find((d) => d.value === selected)?.km;
     if (dist && dist > 0) {
       const paceSec = finishTime / dist;
@@ -51,16 +58,16 @@ export default function Running() {
     }
   }
 
-  if (step === 1) {
+  if (step === "distance") {
     return (
       <SelectDistanceStep
         distances={DISTANCES}
         onSelect={(val) => {
           setSelected(val);
           if (val === "none") {
-            setStep(3);
+            setStep("summary");
           } else {
-            setStep(2);
+            setStep("goal");
           }
         }}
         onBack={() => router.push("/")}
@@ -68,7 +75,7 @@ export default function Running() {
     );
   }
 
-  if (step === 2 && selected !== null && selected !== "none") {
+  if (step === "goal" && selected !== null && selected !== "none") {
     return (
       <SetGoalStep
         selected={selected}
@@ -76,13 +83,13 @@ export default function Running() {
         goalWeeks={goalWeeks}
         onFinishTimeChange={setFinishTime}
         onGoalWeeksChange={handleGoalWeeksChange}
-        onContinue={() => setStep(3)}
-        onBack={() => setStep(1)}
+        onContinue={() => setStep("summary")}
+        onBack={() => setStep("distance")}
       />
     );
   }
 
-  if (step === 3 && selected !== null) {
+  if (step === "summary" && selected !== null) {
     return (
       <SummaryStep
         selected={selected}
@@ -90,7 +97,7 @@ export default function Running() {
         goalWeeks={goalWeeks}
         calculatedPace={calculatedPace}
         randomWorkout={randomWorkout}
-        onBack={() => setStep(selected === "none" ? 1 : 2)}
+        onBack={() => setStep(selected === "none" ? "distance" : "goal")}
       />
     );
   }

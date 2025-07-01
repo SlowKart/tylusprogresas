@@ -1,7 +1,7 @@
 import React from "react";
-import { StepLayout } from "../StepLayout";
-import { DISTANCES } from "../../constants/running";
-import { formatTime } from "../../utils/running";
+import { StepLayout } from "@/components/StepLayout";
+import { DISTANCES } from "@/constants/running";
+import { formatTime, formatWeeks } from "@/utils/running";
 
 export function SummaryStep({
   selected,
@@ -58,7 +58,7 @@ export function SummaryStep({
             )}
             <span className="text-base text-foreground text-center">
               <span className="font-semibold">Time to achieve:</span>{" "}
-              {goalWeeks}
+              {formatWeeks(goalWeeks)}
             </span>
           </div>
         </div>
