@@ -38,7 +38,7 @@ export function CustomSlider({
           width,
           height,
           borderRadius: height / 2,
-          background: "#E8E9F1",
+          background: "#A0A3B1",
         }}
       />
       {/* Progress */}
@@ -50,7 +50,7 @@ export function CustomSlider({
           width: progressWidth,
           height,
           borderRadius: height / 2,
-          background: "#006FFD",
+          background: "#1F2024",
         }}
       />
       {/* Thumb */}
@@ -74,7 +74,7 @@ export function CustomSlider({
             width: 10,
             height: 10,
             borderRadius: "50%",
-            background: "#006FFD",
+            background: "#1F2024",
           }}
         />
       </div>

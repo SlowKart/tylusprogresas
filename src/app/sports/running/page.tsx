@@ -59,7 +59,7 @@ function BackArrow({ onClick }: { onClick: () => void }) {
       type="button"
       onClick={onClick}
       aria-label="Back"
-      className="mr-2 p-2 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      className="mr-2 p-2 rounded-full hover:bg-[#E8E9F1] focus:outline-none focus:ring-2 focus:ring-[#494A50]"
       style={{ lineHeight: 0 }}
     >
       <svg
@@ -68,7 +68,7 @@ function BackArrow({ onClick }: { onClick: () => void }) {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="text-gray-700"
+        className="text-[#494A50]"
       >
         <path
           strokeLinecap="round"
@@ -91,10 +91,10 @@ function StepLayout({
   title: string;
 }) {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 p-4">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
       <div className="flex items-center mb-8">
         {onBack && <BackArrow onClick={onBack} />}
-        <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+        <h1 className="text-3xl font-bold text-[#1F2024]">{title}</h1>
       </div>
       {children}
     </main>
@@ -120,8 +120,8 @@ function GoalSlider({
 }) {
   return (
     <div>
-      <div className="text-lg font-semibold mb-2 text-gray-800">{label}</div>
-      <div className="text-center text-gray-900 font-sans font-mono text-lg mb-2">
+      <div className="text-lg font-semibold mb-2 text-[#2F3036]">{label}</div>
+      <div className="text-center text-[#1F2024] font-sans font-mono text-lg mb-2">
         {formatValue(value)}
       </div>
       <CustomSlider
@@ -219,7 +219,7 @@ export default function Running() {
     return (
       <StepLayout title="Set Your Goal" onBack={() => setStep(1)}>
         <form
-          className="flex flex-col gap-6 w-full max-w-[393px] bg-white shadow-md rounded-xl p-8"
+          className="flex flex-col gap-6 w-full max-w-[393px] p-0"
           onSubmit={(e) => {
             e.preventDefault();
             setStep(3);
@@ -262,7 +262,7 @@ export default function Running() {
     return (
       <StepLayout title="Your Running Goal" onBack={() => setStep(2)}>
         <div className="bg-white shadow-md rounded-xl p-8 max-w-[393px] w-full flex flex-col items-center">
-          <div className="mb-4 text-gray-700">
+          <div className="mb-4 text-[#494A50]">
             <div>
               <b>Distance:</b>{" "}
               {DISTANCES.find((d) => d.value === selected)?.label}
@@ -281,7 +281,7 @@ export default function Running() {
               <b>Time to achieve:</b> {formatWeeks(goalWeeks)}
             </div>
           </div>
-          <p className="text-gray-600 text-center mb-2">
+          <p className="text-[#71727A] text-center mb-2">
             To reach your goal, follow a structured training plan, gradually
             increase your weekly mileage, and include a mix of easy runs,
             intervals, and long runs. Remember to rest and listen to your body.

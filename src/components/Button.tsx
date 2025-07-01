@@ -15,20 +15,20 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const base =
-    "flex flex-row justify-center items-center min-h-[40px] px-4 py-3 gap-2 font-semibold text-base transition focus:outline-none focus:ring-2 focus:ring-blue-400";
+    "flex flex-row justify-center items-center min-h-[40px] px-4 py-3 gap-2 font-semibold text-base transition focus:outline-none focus:ring-2 focus:ring-[#494A50]";
   let styles = "";
   switch (variant) {
     case "primary":
       styles =
-        "bg-[#006FFD] text-white rounded-[12px] border-none hover:bg-blue-700 active:bg-blue-800";
+        "bg-[#1F2024] text-white rounded-[12px] border-none hover:bg-[#494A50] active:bg-[#2F3036]";
       break;
     case "secondary":
       styles =
-        "bg-white text-[#006FFD] border border-[#006FFD] border-[1.5px] rounded-[12px] hover:bg-blue-50 active:bg-blue-100";
+        "bg-white text-[#8F9098] border border-[#8F9098] border-[1.5px] rounded-[12px] hover:bg-[#F5F5F7] active:bg-[#E8E9F1]";
       break;
     case "tertiary":
       styles =
-        "bg-transparent text-[#006FFD] rounded-[8px] border-none hover:bg-blue-50 active:bg-blue-100";
+        "bg-transparent text-[#71727A] rounded-[8px] border-none hover:bg-[#F5F5F7] active:bg-[#E8E9F1]";
       break;
   }
   return (

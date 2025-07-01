@@ -6,9 +6,9 @@ import { Button } from "@/components/Button";
 export default function Home() {
   const router = useRouter();
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 p-4">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
       <div className="w-full max-w-[393px] flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-8 text-gray-900">
+        <h1 className="text-3xl font-bold mb-8 text-[#1F2024]">
           Select a Sport
         </h1>
         <div className="flex flex-col gap-8 w-full">
