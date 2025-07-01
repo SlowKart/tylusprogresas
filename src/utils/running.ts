@@ -5,10 +5,7 @@ export function formatTime(seconds: number) {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = seconds % 60;
-  return [h, m, s]
-    .map((v, i) => (i === 0 && v === 0 ? null : v.toString().padStart(2, "0")))
-    .filter(Boolean)
-    .join(":");
+  return [h, m, s].map((v) => v.toString().padStart(2, "0")).join(":");
 }
 
 export function formatPace(paceSeconds: number) {
@@ -46,3 +43,5 @@ export function useRandomWorkout(selected: string | null) {
   }, [selected]);
   return randomWorkout;
 }
+
+export { formatTime as formatFinishTime };
