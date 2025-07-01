@@ -39,21 +39,27 @@ export function SummaryStep({
         <div className="mb-4 text-primary">
           <div>
             <b>Distance:</b>{" "}
-            {DISTANCES.find((d) => d.value === selected)?.label}
+            <span className="text-foreground">
+              {DISTANCES.find((d) => d.value === selected)?.label}
+            </span>
           </div>
           {selected !== "none" && finishTime !== null && (
             <>
               <div>
                 <b>Finish time:</b>{" "}
-                {finishTime !== null ? formatTime(finishTime) : "-"}
+                <span className="text-foreground">
+                  {finishTime !== null ? formatTime(finishTime) : "-"}
+                </span>
               </div>
               <div>
-                <b>Pace:</b> {calculatedPace}
+                <b>Pace:</b>{" "}
+                <span className="text-foreground">{calculatedPace}</span>
               </div>
             </>
           )}
           <div>
-            <b>Time to achieve:</b> {goalWeeks}
+            <b>Time to achieve:</b>{" "}
+            <span className="text-foreground">{goalWeeks}</span>
           </div>
         </div>
         <p className="text-muted text-center mb-2">

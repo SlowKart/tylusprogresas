@@ -21,7 +21,7 @@ export function GoalSlider({
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <div className="text-lg font-semibold mb-2 text-primary">{label}</div>
-      <div className="text-center text-muted font-sans font-mono text-lg mb-2">
+      <div className="text-center text-foreground font-sans font-mono text-lg mb-2">
         {formatValue(value)}
       </div>
       <Slider
