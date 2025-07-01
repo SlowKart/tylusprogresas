@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../Button";
+import { Button } from "../ui/button";
 import { StepLayout } from "../StepLayout";
 import { DistanceOption } from "../../constants/running";
 
@@ -18,7 +18,6 @@ export function SelectDistanceStep({
         {distances.map((d) => (
           <Button
             key={d.value}
-            variant="primary"
             className="w-full"
             onClick={() => onSelect(d.value)}
             aria-label={`Select ${d.label}`}

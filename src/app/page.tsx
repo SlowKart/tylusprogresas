@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const router = useRouter();
@@ -13,13 +13,12 @@ export default function Home() {
         </h1>
         <div className="flex flex-col gap-8 w-full">
           <Button
-            variant="primary"
             className="w-full"
             onClick={() => router.push("/sports/running")}
           >
             Running
           </Button>
-          <Button variant="primary" className="w-full" onClick={() => {}}>
+          <Button className="w-full" onClick={() => {}}>
             General Fitness
           </Button>
         </div>

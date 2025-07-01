@@ -6,7 +6,7 @@ import {
   MIN_WEEKS,
   MAX_WEEKS,
 } from "../../constants/running";
-import { Button } from "../Button";
+import { Button } from "../ui/button";
 import { formatTime, formatWeeks } from "../../utils/running";
 
 export function SetGoalStep({
@@ -56,7 +56,6 @@ export function SetGoalStep({
         />
         <Button
           type="submit"
-          variant="primary"
           className="w-full mt-4"
           disabled={selected !== "none" && finishTime === null}
         >

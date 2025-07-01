@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomSlider } from "./CustomSlider";
+import { Slider } from "./ui/slider";
 
 export function GoalSlider({
   label,
@@ -24,13 +24,14 @@ export function GoalSlider({
       <div className="text-center text-[#1F2024] font-sans font-mono text-lg mb-2">
         {formatValue(value)}
       </div>
-      <CustomSlider
-        value={value}
+      <Slider
+        value={[value]}
         min={min}
         max={max}
         step={step}
-        onChange={onChange}
-        ariaLabel={label}
+        onValueChange={([v]) => onChange(v)}
+        aria-label={label}
+        className="w-full max-w-[278px]"
       />
     </div>
   );
