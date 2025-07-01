@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { StepLayout } from "../StepLayout";
-import { DistanceOption } from "../../constants/running";
+import { DistanceOption } from "@/constants/running";
 
 export function SelectDistanceStep({
   distances,

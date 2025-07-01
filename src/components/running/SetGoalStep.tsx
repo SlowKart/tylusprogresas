@@ -1,13 +1,9 @@
 import React from "react";
-import { StepLayout } from "../StepLayout";
-import { GoalSlider } from "../GoalSlider";
-import {
-  FINISH_TIME_RANGES,
-  MIN_WEEKS,
-  MAX_WEEKS,
-} from "../../constants/running";
-import { Button } from "../ui/button";
-import { formatTime, formatWeeks } from "../../utils/running";
+import { StepLayout } from "@/components/StepLayout";
+import { GoalSlider } from "@/components/GoalSlider";
+import { FINISH_TIME_RANGES, MIN_WEEKS, MAX_WEEKS } from "@/constants/running";
+import { Button } from "@/components/ui/button";
+import { formatTime, formatWeeks } from "@/utils/running";
 
 export function SetGoalStep({
   selected,
