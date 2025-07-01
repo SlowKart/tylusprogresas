@@ -1,5 +1,5 @@
 import React from "react";
-import { Slider } from "./ui/slider";
+import { Slider } from "@/components/ui/slider";
 
 export function GoalSlider({
   label,
