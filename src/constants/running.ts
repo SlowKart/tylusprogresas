@@ -6,6 +6,8 @@ export type DistanceValue =
   | "marathon"
   | "none";
 
+export type ExperienceLevel = "beginner" | "intermediate" | "advanced";
+
 export interface DistanceOption {
   label: string;
   value: DistanceValue;

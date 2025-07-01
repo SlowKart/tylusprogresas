@@ -7,6 +7,7 @@ import {
   MAX_WEEKS,
   FINISH_TIME_RANGES,
   DistanceValue,
+  ExperienceLevel,
 } from "@/constants/running";
 import { formatPace, useRandomWorkout } from "@/utils/running";
 import { SelectDistanceStep } from "@/components/running/SelectDistanceStep";
@@ -22,7 +23,7 @@ type Step = "experience" | "distance" | "goal" | "summary";
 export default function Running() {
   const router = useRouter();
   const [step, setStep] = useState<Step>("experience");
-  const [level, setLevel] = useState<string>("beginner");
+  const [level, setLevel] = useState<ExperienceLevel>("beginner");
   const [frequency, setFrequency] = useState<number>(3);
   const [selected, setSelected] = useState<DistanceValue | null>(null);
   const [finishTime, setFinishTime] = useState<number | null>(null);
@@ -81,7 +82,7 @@ export default function Running() {
             </div>
             <RadioGroup
               value={level}
-              onValueChange={setLevel}
+              onValueChange={(value) => setLevel(value as ExperienceLevel)}
               className="flex flex-row justify-center gap-6"
               aria-label="Experience Level"
             >

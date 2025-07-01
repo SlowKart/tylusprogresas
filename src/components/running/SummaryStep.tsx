@@ -1,6 +1,6 @@
 import React from "react";
 import { StepLayout } from "@/components/StepLayout";
-import { DISTANCES, DistanceValue } from "@/constants/running";
+import { DISTANCES, DistanceValue, ExperienceLevel } from "@/constants/running";
 import { formatTime, formatWeeks } from "@/utils/running";
 
 export function SummaryStep({
@@ -19,7 +19,7 @@ export function SummaryStep({
   calculatedPace: string | null;
   randomWorkout: string | null;
   onBack: () => void;
-  level: string;
+  level: ExperienceLevel;
   frequency: number;
 }) {
   if (selected === "none") {

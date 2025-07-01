@@ -1,15 +1,16 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SummaryStep } from "../SummaryStep";
+import { DistanceValue, ExperienceLevel } from "@/constants/running";
 
 describe("SummaryStep", () => {
   const defaultProps = {
-    selected: "5k",
+    selected: "5km" as DistanceValue,
     finishTime: 1800,
     goalWeeks: 8,
     calculatedPace: "5:00",
     randomWorkout: null,
     onBack: jest.fn(),
-    level: "beginner",
+    level: "beginner" as ExperienceLevel,
     frequency: 3,
   };
 
@@ -28,7 +29,7 @@ describe("SummaryStep", () => {
     render(
       <SummaryStep
         {...defaultProps}
-        selected="none"
+        selected={"none" as DistanceValue}
         randomWorkout="Random workout!"
       />
     );
