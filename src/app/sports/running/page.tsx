@@ -11,12 +11,18 @@ import { formatPace, useRandomWorkout } from "@/utils/running";
 import { SelectDistanceStep } from "@/components/running/SelectDistanceStep";
 import { SetGoalStep } from "@/components/running/SetGoalStep";
 import { SummaryStep } from "@/components/running/SummaryStep";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { StepLayout } from "@/components/StepLayout";
 
-type Step = "distance" | "goal" | "summary";
+type Step = "experience" | "distance" | "goal" | "summary";
 
 export default function Running() {
   const router = useRouter();
-  const [step, setStep] = useState<Step>("distance");
+  const [step, setStep] = useState<Step>("experience");
+  const [level, setLevel] = useState<string>("beginner");
+  const [frequency, setFrequency] = useState<number>(3);
   const [selected, setSelected] = useState<string | null>(null);
   const [finishTime, setFinishTime] = useState<number | null>(null);
   const [goalWeeks, setGoalWeeks] = useState(MIN_WEEKS);
@@ -58,6 +64,100 @@ export default function Running() {
     }
   }
 
+  if (step === "experience") {
+    return (
+      <StepLayout title="Your Experience" onBack={() => router.push("/")}>
+        <form
+          className="flex flex-col gap-form w-full max-w-card p-0"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setStep("distance");
+          }}
+        >
+          <div className="mb-6">
+            <div className="text-lg font-semibold mb-2 text-primary text-center">
+              Select your experience level:
+            </div>
+            <RadioGroup
+              value={level}
+              onValueChange={setLevel}
+              className="flex flex-row justify-center gap-6"
+              aria-label="Experience Level"
+            >
+              <RadioGroupItem
+                value="beginner"
+                id="level-beginner"
+                className="peer sr-only"
+              />
+              <label
+                htmlFor="level-beginner"
+                className={`px-4 py-2 rounded-lg border cursor-pointer text-base font-medium ${
+                  level === "beginner"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-foreground"
+                }`}
+              >
+                Beginner
+              </label>
+              <RadioGroupItem
+                value="intermediate"
+                id="level-intermediate"
+                className="peer sr-only"
+              />
+              <label
+                htmlFor="level-intermediate"
+                className={`px-4 py-2 rounded-lg border cursor-pointer text-base font-medium ${
+                  level === "intermediate"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-foreground"
+                }`}
+              >
+                Intermediate
+              </label>
+              <RadioGroupItem
+                value="advanced"
+                id="level-advanced"
+                className="peer sr-only"
+              />
+              <label
+                htmlFor="level-advanced"
+                className={`px-4 py-2 rounded-lg border cursor-pointer text-base font-medium ${
+                  level === "advanced"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-foreground"
+                }`}
+              >
+                Advanced
+              </label>
+            </RadioGroup>
+          </div>
+          <div className="mb-6">
+            <div className="text-lg font-semibold mb-2 text-primary text-center">
+              How many times per week do you want to train?
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-center text-foreground font-sans font-mono text-lg mb-2">
+                {frequency}x / week
+              </div>
+              <Slider
+                value={[frequency]}
+                min={2}
+                max={7}
+                step={1}
+                onValueChange={([v]) => setFrequency(v)}
+                aria-label="Training Frequency"
+                className="w-full max-w-slider"
+              />
+            </div>
+          </div>
+          <Button type="submit" className="w-full mt-form-btn">
+            Continue
+          </Button>
+        </form>
+      </StepLayout>
+    );
+  }
+
   if (step === "distance") {
     return (
       <SelectDistanceStep
@@ -70,7 +170,7 @@ export default function Running() {
             setStep("goal");
           }
         }}
-        onBack={() => router.push("/")}
+        onBack={() => setStep("experience")}
       />
     );
   }
@@ -98,6 +198,8 @@ export default function Running() {
         calculatedPace={calculatedPace}
         randomWorkout={randomWorkout}
         onBack={() => setStep(selected === "none" ? "distance" : "goal")}
+        level={level}
+        frequency={frequency}
       />
     );
   }

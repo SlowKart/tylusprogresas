@@ -10,6 +10,8 @@ export function SummaryStep({
   calculatedPace,
   randomWorkout,
   onBack,
+  level,
+  frequency,
 }: {
   selected: string;
   finishTime: number | null;
@@ -17,6 +19,8 @@ export function SummaryStep({
   calculatedPace: string | null;
   randomWorkout: string | null;
   onBack: () => void;
+  level: string;
+  frequency: number;
 }) {
   if (selected === "none") {
     return (
@@ -59,6 +63,14 @@ export function SummaryStep({
             <span className="text-base text-foreground text-center">
               <span className="font-semibold">Time to achieve:</span>{" "}
               {formatWeeks(goalWeeks)}
+            </span>
+            <span className="text-base text-foreground text-center">
+              <span className="font-semibold">Experience level:</span>{" "}
+              {level.charAt(0).toUpperCase() + level.slice(1)}
+            </span>
+            <span className="text-base text-foreground text-center">
+              <span className="font-semibold">Training frequency:</span>{" "}
+              {frequency}x / week
             </span>
           </div>
         </div>
