@@ -8,7 +8,7 @@ describe("Button", () => {
   });
 
   it("handles click event", () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     render(<Button onClick={onClick}>Click</Button>);
     fireEvent.click(screen.getByText("Click"));
     expect(onClick).toHaveBeenCalled();

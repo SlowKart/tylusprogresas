@@ -9,7 +9,7 @@ describe("GoalSlider", () => {
     max: 60,
     step: 5,
     value: 30,
-    onChange: jest.fn(),
+    onChange: vi.fn(),
     formatValue: (v: number) => `${v} min`,
   };
 
@@ -22,7 +22,7 @@ describe("GoalSlider", () => {
   });
 
   it("calls onChange when slider is moved", async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     render(<GoalSlider {...defaultProps} onChange={onChange} />);
     // Simulate keyboard interaction (arrow right increases value)
     const slider = screen.getByRole("slider");

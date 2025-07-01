@@ -4,7 +4,7 @@ import { RadioGroup, RadioGroupItem } from "../radio-group";
 
 describe("RadioGroup", () => {
   it("renders options and handles selection change", async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     render(
       <RadioGroup value="1" onValueChange={onValueChange}>
         <label>

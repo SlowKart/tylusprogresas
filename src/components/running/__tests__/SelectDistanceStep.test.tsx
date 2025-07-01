@@ -7,8 +7,8 @@ describe("SelectDistanceStep", () => {
     render(
       <SelectDistanceStep
         distances={DISTANCES}
-        onSelect={jest.fn()}
-        onBack={jest.fn()}
+        onSelect={vi.fn()}
+        onBack={vi.fn()}
       />
     );
     DISTANCES.forEach((d) => {
@@ -17,12 +17,12 @@ describe("SelectDistanceStep", () => {
   });
 
   it("calls onSelect with correct value", () => {
-    const onSelect = jest.fn();
+    const onSelect = vi.fn();
     render(
       <SelectDistanceStep
         distances={DISTANCES}
         onSelect={onSelect}
-        onBack={jest.fn()}
+        onBack={vi.fn()}
       />
     );
     fireEvent.click(screen.getByText(DISTANCES[0].label));
@@ -30,11 +30,11 @@ describe("SelectDistanceStep", () => {
   });
 
   it("calls onBack when back button is clicked", () => {
-    const onBack = jest.fn();
+    const onBack = vi.fn();
     render(
       <SelectDistanceStep
         distances={DISTANCES}
-        onSelect={jest.fn()}
+        onSelect={vi.fn()}
         onBack={onBack}
       />
     );

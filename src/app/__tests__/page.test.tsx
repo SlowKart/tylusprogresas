@@ -1,7 +1,4 @@
 import { render, screen } from "@testing-library/react";
-jest.mock("next/navigation", () => ({
-  useRouter: () => ({ push: jest.fn(), prefetch: jest.fn() }),
-}));
 import HomePage from "../page";
 
 describe("HomePage", () => {

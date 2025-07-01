@@ -10,7 +10,7 @@ describe("Slider", () => {
         max={100}
         step={10}
         value={[50]}
-        onValueChange={jest.fn()}
+        onValueChange={vi.fn()}
       />
     );
     const slider = screen.getByRole("slider");
@@ -20,7 +20,7 @@ describe("Slider", () => {
   });
 
   it("handles change event (keyboard interaction)", async () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     render(
       <Slider
         min={0}

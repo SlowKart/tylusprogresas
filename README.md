@@ -26,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Testing
 
-This project uses [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for comprehensive testing.
+This project uses [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for comprehensive testing.
 
 ### Running Tests
 
@@ -39,7 +39,7 @@ npm test
 Run tests in watch mode (recommended during development):
 
 ```bash
-npm test -- --watch
+npm test
 ```
 
 Run tests for a specific file:

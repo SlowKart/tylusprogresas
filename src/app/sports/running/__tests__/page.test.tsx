@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-jest.mock("next/navigation", () => ({
-  useRouter: () => ({ push: jest.fn(), prefetch: jest.fn() }),
-}));
+
 import RunningPage from "../page";
 
 describe("RunningPage", () => {

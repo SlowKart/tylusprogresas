@@ -9,7 +9,7 @@ describe("SummaryStep", () => {
     goalWeeks: 8,
     calculatedPace: "5:00",
     randomWorkout: null,
-    onBack: jest.fn(),
+    onBack: vi.fn(),
     level: "beginner" as ExperienceLevel,
     frequency: 3,
   };
@@ -38,7 +38,7 @@ describe("SummaryStep", () => {
   });
 
   it("calls onBack when back button is clicked", () => {
-    const onBack = jest.fn();
+    const onBack = vi.fn();
     render(<SummaryStep {...defaultProps} onBack={onBack} />);
     fireEvent.click(screen.getByRole("button", { name: /back/i }));
     expect(onBack).toHaveBeenCalled();

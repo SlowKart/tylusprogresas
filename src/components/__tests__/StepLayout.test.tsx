@@ -13,7 +13,7 @@ describe("StepLayout", () => {
   });
 
   it("renders back button and calls onBack", () => {
-    const onBack = jest.fn();
+    const onBack = vi.fn();
     render(
       <StepLayout title="Test Title" onBack={onBack}>
         <div>Step Content</div>

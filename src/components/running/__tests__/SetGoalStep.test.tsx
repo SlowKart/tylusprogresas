@@ -1,17 +1,17 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SetGoalStep } from "../SetGoalStep";
-import { FINISH_TIME_RANGES } from "@/constants/running";
+import { FINISH_TIME_RANGES, DistanceValue } from "@/constants/running";
 
 describe("SetGoalStep", () => {
-  const validSelected = Object.keys(FINISH_TIME_RANGES)[0];
+  const validSelected = Object.keys(FINISH_TIME_RANGES)[0] as DistanceValue;
   const defaultProps = {
     selected: validSelected,
     finishTime: FINISH_TIME_RANGES[validSelected].min,
     goalWeeks: 8,
-    onFinishTimeChange: jest.fn(),
-    onGoalWeeksChange: jest.fn(),
-    onContinue: jest.fn(),
-    onBack: jest.fn(),
+    onFinishTimeChange: vi.fn(),
+    onGoalWeeksChange: vi.fn(),
+    onContinue: vi.fn(),
+    onBack: vi.fn(),
   };
 
   it("renders both sliders", () => {
@@ -23,7 +23,7 @@ describe("SetGoalStep", () => {
   });
 
   it("calls onContinue when form is submitted", () => {
-    const onContinue = jest.fn();
+    const onContinue = vi.fn();
     const { container } = render(
       <SetGoalStep {...defaultProps} onContinue={onContinue} />
     );
@@ -33,7 +33,7 @@ describe("SetGoalStep", () => {
   });
 
   it("calls onBack when back button is clicked", () => {
-    const onBack = jest.fn();
+    const onBack = vi.fn();
     render(<SetGoalStep {...defaultProps} onBack={onBack} />);
     fireEvent.click(screen.getByRole("button", { name: /back/i }));
     expect(onBack).toHaveBeenCalled();
