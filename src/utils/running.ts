@@ -1,5 +1,6 @@
 // Utility functions for running logic
 import { useState, useEffect } from "react";
+import { DistanceValue } from "@/constants/running";
 
 export function formatTime(seconds: number) {
   const h = Math.floor(seconds / 3600);
@@ -31,7 +32,7 @@ export function getRandomWorkout() {
   return workouts[Math.floor(Math.random() * workouts.length)];
 }
 
-export function useRandomWorkout(selected: string | null) {
+export function useRandomWorkout(selected: DistanceValue | null) {
   const [randomWorkout, setRandomWorkout] = useState<string | null>(null);
   useEffect(() => {
     if (selected === "none" && randomWorkout === null) {

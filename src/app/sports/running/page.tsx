@@ -6,6 +6,7 @@ import {
   MIN_WEEKS,
   MAX_WEEKS,
   FINISH_TIME_RANGES,
+  DistanceValue,
 } from "@/constants/running";
 import { formatPace, useRandomWorkout } from "@/utils/running";
 import { SelectDistanceStep } from "@/components/running/SelectDistanceStep";
@@ -23,7 +24,7 @@ export default function Running() {
   const [step, setStep] = useState<Step>("experience");
   const [level, setLevel] = useState<string>("beginner");
   const [frequency, setFrequency] = useState<number>(3);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<DistanceValue | null>(null);
   const [finishTime, setFinishTime] = useState<number | null>(null);
   const [goalWeeks, setGoalWeeks] = useState(MIN_WEEKS);
   const randomWorkout = useRandomWorkout(selected);

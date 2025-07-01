@@ -1,6 +1,6 @@
 import React from "react";
 import { StepLayout } from "@/components/StepLayout";
-import { DISTANCES } from "@/constants/running";
+import { DISTANCES, DistanceValue } from "@/constants/running";
 import { formatTime, formatWeeks } from "@/utils/running";
 
 export function SummaryStep({
@@ -13,7 +13,7 @@ export function SummaryStep({
   level,
   frequency,
 }: {
-  selected: string;
+  selected: DistanceValue;
   finishTime: number | null;
   goalWeeks: number;
   calculatedPace: string | null;
@@ -49,7 +49,7 @@ export function SummaryStep({
               <span className="font-semibold">Distance:</span>{" "}
               {DISTANCES.find((d) => d.value === selected)?.label}
             </span>
-            {selected !== "none" && finishTime !== null && (
+            {finishTime !== null && (
               <>
                 <span className="text-base text-foreground text-center">
                   <span className="font-semibold">Finish time:</span>{" "}

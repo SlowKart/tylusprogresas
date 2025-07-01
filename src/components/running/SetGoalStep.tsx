@@ -1,7 +1,12 @@
 import React from "react";
 import { StepLayout } from "@/components/StepLayout";
 import { GoalSlider } from "@/components/GoalSlider";
-import { FINISH_TIME_RANGES, MIN_WEEKS, MAX_WEEKS } from "@/constants/running";
+import {
+  FINISH_TIME_RANGES,
+  MIN_WEEKS,
+  MAX_WEEKS,
+  DistanceValue,
+} from "@/constants/running";
 import { Button } from "@/components/ui/button";
 import { formatTime, formatWeeks } from "@/utils/running";
 
@@ -14,7 +19,7 @@ export function SetGoalStep({
   onContinue,
   onBack,
 }: {
-  selected: string;
+  selected: DistanceValue;
   finishTime: number;
   goalWeeks: number;
   onFinishTimeChange: (v: number) => void;

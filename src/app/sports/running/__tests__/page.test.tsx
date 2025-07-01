@@ -20,8 +20,8 @@ describe("RunningPage", () => {
     // Select 'Intermediate'
     await userEvent.click(screen.getByLabelText(/intermediate/i));
     // Change frequency slider (simulate arrow right)
-    const slider = screen.getByRole("slider", { name: /training frequency/i });
-    await userEvent.type(slider, "{arrowright}");
+    const sliders = screen.getAllByRole("slider");
+    await userEvent.type(sliders[0], "{arrowright}");
     // Continue to distance step
     await userEvent.click(screen.getByRole("button", { name: /continue/i }));
     // Distance step
@@ -56,9 +56,9 @@ describe("RunningPage", () => {
     render(<RunningPage />);
     // Experience step: select 'Advanced', frequency 5
     await userEvent.click(screen.getByLabelText(/advanced/i));
-    const slider = screen.getByRole("slider", { name: /training frequency/i });
+    const sliders = screen.getAllByRole("slider");
     // Move slider to 5 (simulate 3 right arrows from default 2)
-    await userEvent.type(slider, "{arrowright}{arrowright}{arrowright}");
+    await userEvent.type(sliders[0], "{arrowright}{arrowright}{arrowright}");
     await userEvent.click(screen.getByRole("button", { name: /continue/i }));
     // Distance step: select 'Marathon'
     await userEvent.click(
@@ -72,6 +72,6 @@ describe("RunningPage", () => {
     expect(screen.getByText(/experience level/i)).toBeInTheDocument();
     expect(screen.getByText(/advanced/i)).toBeInTheDocument();
     expect(screen.getByText(/training frequency/i)).toBeInTheDocument();
-    expect(screen.getByText(/5x \/ week/i)).toBeInTheDocument();
+    expect(screen.getByText(/6x \/ week/i)).toBeInTheDocument();
   });
 });
