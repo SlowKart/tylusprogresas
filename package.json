@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "extract:pdfs": "node --experimental-modules extract-and-store-pdf-texts.js",
     "lint": "next lint",
     "test": "vitest"
   },

@@ -67,7 +67,7 @@ export default function Running() {
   }
 
   if (step === "experience") {
-    return (
+  return (
       <StepLayout title="Your Experience" onBack={() => router.push("/")}>
         <form
           className="flex flex-col gap-form w-full max-w-card p-0"
@@ -151,7 +151,7 @@ export default function Running() {
                 className="w-full max-w-slider"
               />
             </div>
-          </div>
+      </div>
           <Button type="submit" className="w-full mt-form-btn">
             Continue
           </Button>

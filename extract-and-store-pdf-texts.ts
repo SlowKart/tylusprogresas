@@ -1,14 +1,45 @@
 import { config } from "dotenv";
 config({ path: ".env.local" });
 
-import { supabase } from "./src/lib/supabase";
-// Use require for pdf-parse to avoid esModuleInterop issues in CJS/TS
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+import { supabaseAdmin } from "./src/lib/supabaseAdmin";
+
+// @ts-ignore: pdf-parse doesn't have proper types
 const pdfParse = require("pdf-parse");
+
+// Type declaration for pdf-parse
+type PDFInfo = {
+  title?: string;
+  author?: string;
+  subject?: string;
+  keywords?: string;
+  creationDate?: Date;
+  modDate?: Date;
+};
+
+type PDFMetadata = {
+  contentType?: string;
+  creator?: string;
+  producer?: string;
+};
+
+type PDFParseResult = {
+  numpages: number;
+  numrender: number;
+  info: PDFInfo;
+  metadata: PDFMetadata;
+  text: string;
+  version: string;
+};
+
+declare module "pdf-parse/lib" {
+  function pdfParse(dataBuffer: Buffer): Promise<PDFParseResult>;
+  namespace pdfParse {}
+  export = pdfParse;
+}
 
 async function main() {
   // List all files in the bucket
-  const { data: files, error: listError } = await supabase.storage
+  const { data: files, error: listError } = await supabaseAdmin.storage
     .from("program-pdfs")
     .list("");
   if (listError) {
@@ -23,7 +54,7 @@ async function main() {
   for (const file of files) {
     if (!file.name.endsWith(".pdf")) continue;
     console.log(`Processing: ${file.name}`);
-    const { data, error } = await supabase.storage
+    const { data, error } = await supabaseAdmin.storage
       .from("program-pdfs")
       .download(file.name);
     if (error || !data) {
@@ -35,16 +66,23 @@ async function main() {
       const buffer = Buffer.from(arrayBuffer);
       const parsed = await pdfParse(buffer);
       const text = parsed.text;
-      // Upsert into pdf_texts table
-      const { error: upsertError } = await supabase
+      // Try to update first
+      const { error: updateError } = await supabaseAdmin
         .from("pdf_texts")
-        .upsert({ filename: file.name, text })
-        .select();
-      if (upsertError) {
-        console.error(`Failed to upsert ${file.name}:`, upsertError.message);
-      } else {
-        console.log(`Stored text for: ${file.name}`);
+        .update({ text })
+        .eq("filename", file.name);
+
+      if (updateError) {
+        // If update failed (no existing row), insert
+        const { error: insertError } = await supabaseAdmin
+          .from("pdf_texts")
+          .insert({ filename: file.name, text });
+        if (insertError) {
+          console.error(`Failed to insert ${file.name}:`, insertError.message);
+          continue;
+        }
       }
+      console.log(`Stored text for: ${file.name}`);
     } catch (err) {
       console.error(`Error processing ${file.name}:`, err);
     }
