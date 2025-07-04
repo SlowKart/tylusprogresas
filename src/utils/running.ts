@@ -41,7 +41,7 @@ export function useRandomWorkout(selected: DistanceValue | null) {
     if (selected !== "none") {
       setRandomWorkout(null);
     }
-  }, [selected]);
+  }, [selected, randomWorkout]);
   return randomWorkout;
 }
 

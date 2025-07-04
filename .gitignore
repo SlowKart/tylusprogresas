@@ -39,3 +39,40 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# MCP configuration with sensitive tokens
+.mcp.json
+
+# AI assistant files
+.claude/
+CLAUDE.md
+
+# Sensitive data files
+*.key
+*.p12
+*.pfx
+*.pem
+*.crt
+*.cer
+*.der
+*.jks
+*.keystore
+*.p8
+
+# API keys and secrets
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+secrets.json
+config.json
+credentials.json
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
