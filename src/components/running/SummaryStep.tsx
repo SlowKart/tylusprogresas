@@ -25,7 +25,7 @@ export function SummaryStep({
   if (selected === "none") {
     return (
       <StepLayout title="Random Workout" onBack={onBack}>
-        <div className="bg-background shadow-md rounded-xl p-8 max-w-card w-full flex flex-col items-center">
+        <div className="bg-background shadow-md rounded-xl p-8 w-full flex flex-col items-center">
           <div className="mb-4 text-primary text-center">
             <span className="block text-xl font-bold mb-2">Your workout:</span>
             <div className="mt-2 text-base text-foreground font-medium">
@@ -41,7 +41,7 @@ export function SummaryStep({
   }
   return (
     <StepLayout title="Your Running Goal" onBack={onBack}>
-      <div className="w-full max-w-card flex flex-col items-center p-0 gap-4">
+      <div className="w-full flex flex-col items-center p-0 gap-4">
         <div className="mb-4 text-primary w-full">
           <div className="flex flex-col gap-1">
             <span className="text-xl font-bold text-center">Goal Summary</span>

@@ -30,7 +30,7 @@ export function SetGoalStep({
   return (
     <StepLayout title="Set Your Goal" onBack={onBack}>
       <form
-        className="flex flex-col gap-form w-full max-w-card p-0"
+        className="flex flex-col gap-form w-full p-0"
         onSubmit={(e) => {
           e.preventDefault();
           onContinue();

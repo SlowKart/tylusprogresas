@@ -1,6 +1,7 @@
 import React from "react";
 import { SkipBack } from "lucide-react";
 import { IconButton } from "./ui/IconButton";
+import { AppContainer } from "./AppContainer";
 
 export function StepLayout({
   children,
@@ -12,8 +13,8 @@ export function StepLayout({
   title: string;
 }) {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
-      <div className="flex items-center mb-8">
+    <AppContainer>
+      <div className="flex items-center mb-8 w-full">
         {onBack && (
           <IconButton onClick={onBack} label="Back">
             <SkipBack
@@ -26,7 +27,9 @@ export function StepLayout({
         )}
         <h1 className="text-3xl font-bold text-primary ml-2">{title}</h1>
       </div>
-      {children}
-    </main>
+      <div className="flex-1 flex flex-col justify-center w-full">
+        {children}
+      </div>
+    </AppContainer>
   );
 }

@@ -54,6 +54,12 @@ module.exports = {
       maxWidth: {
         card: "393px",
         slider: "278px",
+        "app-mobile": "400px",
+        "app-content": "360px",
+      },
+      minHeight: {
+        "app-screen": "calc(100vh - 2rem)",
+        "app-content": "500px",
       },
       gap: {
         form: "1.5rem", // 24px, matches gap-6

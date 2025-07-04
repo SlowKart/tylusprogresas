@@ -70,7 +70,7 @@ export default function Running() {
   return (
       <StepLayout title="Your Experience" onBack={() => router.push("/")}>
         <form
-          className="flex flex-col gap-form w-full max-w-card p-0"
+          className="flex flex-col gap-form w-full p-0"
           onSubmit={(e) => {
             e.preventDefault();
             setStep("distance");
