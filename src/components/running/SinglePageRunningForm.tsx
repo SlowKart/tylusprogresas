@@ -1,9 +1,12 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import {
   Select,
   SelectContent,
@@ -12,6 +15,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { StepLayout } from "@/components/StepLayout"
+import { AppContainer } from "@/components/AppContainer"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { useAuth } from "@/contexts/AuthContext"
+import { authService } from "@/lib/auth"
 import {
   DISTANCES,
   FINISH_TIME_RANGES,
@@ -27,12 +34,15 @@ interface SinglePageRunningFormProps {
 }
 
 export function SinglePageRunningForm({ onBack }: SinglePageRunningFormProps) {
+  const router = useRouter();
+  const { user, isAuthenticated, refreshActiveProgram } = useAuth();
   const [step, setStep] = useState<"basics" | "goals" | "summary">("basics")
   const [level, setLevel] = useState<ExperienceLevel>("beginner")
   const [frequency, setFrequency] = useState<number>(3)
   const [selected, setSelected] = useState<DistanceValue>("5km")
   const [finishTime, setFinishTime] = useState<number>(1800) // 30 minutes default
   const [goalWeeks, setGoalWeeks] = useState(MIN_WEEKS)
+  const [isLoading, setIsLoading] = useState(false);
   
   const randomWorkout = useRandomWorkout(selected, level)
 
@@ -82,65 +92,203 @@ export function SinglePageRunningForm({ onBack }: SinglePageRunningFormProps) {
   if (step === "summary") {
     if (selected === "none") {
       return (
-        <StepLayout title="Random Workout" onBack={() => setStep("basics")}>
-          <div className="bg-background shadow-md rounded-xl p-8 w-full flex flex-col items-center">
-            <div className="mb-4 text-primary text-center">
-              <span className="block text-xl font-bold mb-2">Your workout:</span>
-              <div className="mt-2 text-base text-foreground font-medium">
-                {randomWorkout}
+        <AppContainer>
+          <div className="absolute top-4 right-4">
+            <ThemeToggle />
+          </div>
+          <div className="flex flex-col items-center justify-center flex-1 p-4">
+            <h1 className="text-3xl font-bold mb-8 text-primary">Random Workout</h1>
+            
+            <div className="flex flex-col gap-8 w-full max-w-card">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl text-center">Your workout:</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-center font-medium mb-4">{randomWorkout}</p>
+                  <p className="text-sm text-muted-foreground text-center">
+                    This is a randomly generated workout based on your experience level. Enjoy your run!
+                  </p>
+                </CardContent>
+              </Card>
+
+              <div className="flex flex-col gap-4">
+                {isAuthenticated && user && (
+                  <Button
+                    className="w-full"
+                    onClick={async () => {
+                      setIsLoading(true);
+                      try {
+                        const userSelections = {
+                          sportType: 'running' as const,
+                          level,
+                          frequency,
+                          distance: selected,
+                          finishTime: finishTime,
+                          goalWeeks
+                        };
+
+                        // For running, we'll store the selections and generate a simple program
+                        const programData = {
+                          workout: randomWorkout,
+                          selections: userSelections
+                        };
+
+                        await authService.saveProgram(user.id, 'running', userSelections, programData);
+                        await refreshActiveProgram();
+                        
+                        // Navigate to dashboard
+                        router.push("/dashboard");
+                      } catch {
+                        // Program save failed - stay on current page
+                      } finally {
+                        setIsLoading(false);
+                      }
+                    }}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Saving..." : "Save Program"}
+                  </Button>
+                )}
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => setStep("basics")}
+                >
+                  Back
+                </Button>
               </div>
             </div>
-            <p className="text-base text-foreground text-center leading-relaxed">
-              This is a randomly generated workout based on your experience level. Enjoy your run!
-            </p>
           </div>
-        </StepLayout>
+        </AppContainer>
       )
     }
 
     return (
-      <StepLayout title="Your Running Goal" onBack={() => setStep("goals")}>
-        <div className="w-full flex flex-col items-center p-0 gap-4">
-          <div className="mb-4 text-primary w-full">
-            <div className="flex flex-col gap-1">
-              <span className="text-xl font-bold text-center">Goal Summary</span>
-              <span className="text-base text-foreground text-center">
-                <span className="font-semibold">Distance:</span>{" "}
-                {DISTANCES.find((d) => d.value === selected)?.label}
-              </span>
-              {finishTime !== null && (
-                <>
-                  <span className="text-base text-foreground text-center">
-                    <span className="font-semibold">Finish time:</span>{" "}
-                    {formatTime(finishTime)}
-                  </span>
-                  <span className="text-base text-foreground text-center">
-                    <span className="font-semibold">Pace:</span> {calculatedPace}
-                  </span>
-                </>
+      <AppContainer>
+        <div className="absolute top-4 right-4">
+          <ThemeToggle />
+        </div>
+        <div className="flex flex-col items-center justify-center flex-1 p-4">
+          <h1 className="text-3xl font-bold mb-8 text-primary">Your Running Goal</h1>
+          
+          <div className="flex flex-col gap-8 w-full max-w-card">
+            {/* Goal Summary Card */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Goal Summary</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="font-medium">Distance:</span>
+                  <Badge variant="outline">
+                    {DISTANCES.find((d) => d.value === selected)?.label}
+                  </Badge>
+                </div>
+                
+                {finishTime !== null && (
+                  <>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Finish time:</span>
+                      <span className="text-muted-foreground">{formatTime(finishTime)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Pace:</span>
+                      <span className="text-muted-foreground">{calculatedPace}</span>
+                    </div>
+                  </>
+                )}
+                
+                <div className="flex justify-between">
+                  <span className="font-medium">Time to achieve:</span>
+                  <span className="text-muted-foreground">{formatWeeks(goalWeeks)}</span>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span className="font-medium">Experience level:</span>
+                  <Badge variant="secondary">
+                    {level.charAt(0).toUpperCase() + level.slice(1)}
+                  </Badge>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span className="font-medium">Training frequency:</span>
+                  <span className="text-muted-foreground">{frequency}x / week</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Training Plan Card */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Training Plan</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  To reach your goal, follow a structured training plan, gradually
+                  increase your weekly mileage, and include a mix of easy runs,
+                  intervals, and long runs. Remember to rest and listen to your body.
+                  Good luck!
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="flex flex-col gap-4">
+              {isAuthenticated && user && (
+                <Button
+                  className="w-full"
+                  onClick={async () => {
+                    setIsLoading(true);
+                    try {
+                      const userSelections = {
+                        sportType: 'running' as const,
+                        level,
+                        frequency,
+                        distance: selected,
+                        finishTime: finishTime,
+                        goalWeeks
+                      };
+
+                      // For running, we'll store the selections and goal details
+                      const programData = {
+                        goal: {
+                          distance: DISTANCES.find((d) => d.value === selected)?.label,
+                          finishTime: formatTime(finishTime),
+                          pace: calculatedPace,
+                          weeks: formatWeeks(goalWeeks),
+                          level,
+                          frequency
+                        },
+                        selections: userSelections
+                      };
+
+                      await authService.saveProgram(user.id, 'running', userSelections, programData);
+                      await refreshActiveProgram();
+                      
+                      // Navigate to dashboard
+                      router.push("/dashboard");
+                    } catch {
+                      // Program save failed - stay on current page
+                    } finally {
+                      setIsLoading(false);
+                    }
+                  }}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Saving..." : "Save Running Plan"}
+                </Button>
               )}
-              <span className="text-base text-foreground text-center">
-                <span className="font-semibold">Time to achieve:</span>{" "}
-                {formatWeeks(goalWeeks)}
-              </span>
-              <span className="text-base text-foreground text-center">
-                <span className="font-semibold">Experience level:</span>{" "}
-                {level.charAt(0).toUpperCase() + level.slice(1)}
-              </span>
-              <span className="text-base text-foreground text-center">
-                <span className="font-semibold">Training frequency:</span>{" "}
-                {frequency}x / week
-              </span>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => setStep("goals")}
+              >
+                Back
+              </Button>
             </div>
           </div>
-          <p className="text-base text-foreground text-center leading-relaxed">
-            To reach your goal, follow a structured training plan, gradually
-            increase your weekly mileage, and include a mix of easy runs,
-            intervals, and long runs. Remember to rest and listen to your body.
-            Good luck!
-          </p>
         </div>
-      </StepLayout>
+      </AppContainer>
     )
   }
 

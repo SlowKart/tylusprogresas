@@ -3,31 +3,26 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppContainer } from "@/components/AppContainer";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useAuth } from "@/contexts/AuthContext";
+import { authService } from "@/lib/auth";
+import { generateMockWorkout } from "@/utils/mockWorkoutGenerator";
+import { CARDIO_OPTIONS } from "@/constants/equipment";
+import { EquipmentSelector } from "@/components/EquipmentSelector";
+import { DaysPerWeekSelector } from "@/components/DaysPerWeekSelector";
 
 type Step = "preferences" | "cardio";
 
 export default function GeneralFitness() {
   const router = useRouter();
+  const { user, isAuthenticated, refreshActiveProgram } = useAuth();
   const [currentStep, setCurrentStep] = useState<Step>("preferences");
   const [daysPerWeek, setDaysPerWeek] = useState([3]);
   const [equipment, setEquipment] = useState<string[]>([]);
   const [cardioType, setCardioType] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const equipmentOptions = [
-    { id: "dumbbells", label: "Dumbbells" },
-    { id: "barbell", label: "Barbell" },
-    { id: "gym-machines", label: "Gym Machines" },
-    { id: "no-equipment", label: "No Equipment" },
-  ];
-
-  const cardioOptions = [
-    { id: "running", label: "Running" },
-    { id: "cycling", label: "Cycling" },
-  ];
 
   const handleEquipmentChange = (equipmentId: string, checked: boolean) => {
     if (checked) {
@@ -41,14 +36,55 @@ export default function GeneralFitness() {
     setCurrentStep("cardio");
   };
 
-  const handleFinish = () => {
-    // For now, just show the selections in console
-    console.log("Days per week:", daysPerWeek[0]);
-    console.log("Selected equipment:", equipment);
-    console.log("Cardio type:", cardioType);
+  const handleFinish = async () => {
+    setIsLoading(true);
     
-    // TODO: Navigate to program selection or summary
-    alert(`Selected ${daysPerWeek[0]} days per week with equipment: ${equipment.join(", ") || "none"} and cardio: ${cardioType}`);
+    try {
+      if (isAuthenticated && user) {
+        // Save program for authenticated users
+        const userSelections = {
+          sportType: 'general-fitness' as const,
+          daysPerWeek: daysPerWeek[0],
+          equipment: equipment,
+          cardioType: cardioType
+        };
+
+        const programData = generateMockWorkout({
+          sport: 'general-fitness',
+          daysPerWeek: daysPerWeek[0],
+          equipment: equipment,
+          cardioType: cardioType
+        });
+
+        await authService.saveProgram(user.id, 'general-fitness', userSelections, programData);
+        await refreshActiveProgram();
+        
+        // Redirect to dashboard where they can start their program
+        router.push("/dashboard");
+      } else {
+        // For guest users, navigate to workout display with parameters
+        const params = new URLSearchParams({
+          sport: "general-fitness",
+          days: daysPerWeek[0].toString(),
+          equipment: equipment.join(","),
+          cardio: cardioType
+        });
+        
+        router.push(`/sports/workout?${params.toString()}`);
+      }
+    } catch {
+      // Program save failed - fallback to guest flow
+      const params = new URLSearchParams({
+        sport: "general-fitness",
+        days: daysPerWeek[0].toString(),
+        equipment: equipment.join(","),
+        cardio: cardioType
+      });
+      
+      router.push(`/sports/workout?${params.toString()}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -62,51 +98,15 @@ export default function GeneralFitness() {
         <div className="flex flex-col gap-8 w-full max-w-card">
           {currentStep === "preferences" && (
             <>
-              {/* Days per week slider */}
-              <div className="space-y-4">
-                <Label className="text-lg font-medium">
-                  How many days per week do you want to exercise?
-                </Label>
-                <div className="space-y-2">
-                  <Slider
-                    value={daysPerWeek}
-                    onValueChange={setDaysPerWeek}
-                    max={7}
-                    min={1}
-                    step={1}
-                    className="w-full"
-                  />
-                  <div className="text-center text-2xl font-bold text-primary">
-                    {daysPerWeek[0]} {daysPerWeek[0] === 1 ? "day" : "days"} per week
-                  </div>
-                </div>
-              </div>
+              <DaysPerWeekSelector
+                value={daysPerWeek}
+                onChange={setDaysPerWeek}
+              />
 
-              {/* Equipment selection */}
-              <div className="space-y-4">
-                <Label className="text-lg font-medium">
-                  What equipment do you have available?
-                </Label>
-                <div className="space-y-3">
-                  {equipmentOptions.map((option) => (
-                    <div key={option.id} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={option.id}
-                        checked={equipment.includes(option.id)}
-                        onCheckedChange={(checked) => 
-                          handleEquipmentChange(option.id, checked as boolean)
-                        }
-                      />
-                      <Label 
-                        htmlFor={option.id}
-                        className="text-sm font-normal cursor-pointer"
-                      >
-                        {option.label}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <EquipmentSelector
+                selectedEquipment={equipment}
+                onEquipmentChange={handleEquipmentChange}
+              />
 
               {/* Action buttons */}
               <div className="flex flex-col gap-4 mt-8">
@@ -136,7 +136,7 @@ export default function GeneralFitness() {
                   What type of cardio do you want to do?
                 </Label>
                 <div className="space-y-3">
-                  {cardioOptions.map((option) => (
+                  {CARDIO_OPTIONS.map((option) => (
                     <Button
                       key={option.id}
                       variant={cardioType === option.id ? "default" : "outline"}
@@ -154,9 +154,9 @@ export default function GeneralFitness() {
                 <Button
                   className="w-full"
                   onClick={handleFinish}
-                  disabled={!cardioType}
+                  disabled={!cardioType || isLoading}
                 >
-                  Finish Setup
+                  {isLoading ? "Saving..." : "Finish Setup"}
                 </Button>
                 <Button
                   variant="outline"

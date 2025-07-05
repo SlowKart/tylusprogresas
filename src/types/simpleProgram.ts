@@ -41,17 +41,7 @@ export interface SimpleProgram {
   updatedAt?: Date;
 }
 
-// User progress tracking
-export interface UserProgress {
-  id: string;
-  userId: string;
-  programId: string;
-  currentWeek: number;
-  currentDay: number;
-  completedDays: string[];  // Array of "week-day" strings like ["1-1", "1-3", "2-1"]
-  startDate: Date;
-  status: 'active' | 'completed' | 'paused';
-}
+// Note: UserProgress interface is defined in @/types/auth.ts to avoid duplication
 
 // Day completion
 export interface DayCompletion {
