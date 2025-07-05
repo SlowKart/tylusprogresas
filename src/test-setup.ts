@@ -40,6 +40,7 @@ Object.defineProperty(Element.prototype, "scrollIntoView", {
 // Mock Next.js navigation
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), prefetch: vi.fn() }),
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 // Cleanup after each test case

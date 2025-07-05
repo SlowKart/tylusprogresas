@@ -2,6 +2,7 @@ import React from "react";
 import { SkipBack } from "lucide-react";
 import { IconButton } from "./ui/IconButton";
 import { AppContainer } from "./AppContainer";
+import { DEFAULT_ICON_SIZE, DEFAULT_STROKE_WIDTH } from "@/constants/ui";
 
 export function StepLayout({
   children,
@@ -18,8 +19,8 @@ export function StepLayout({
         {onBack && (
           <IconButton onClick={onBack} label="Back">
             <SkipBack
-              size={24}
-              strokeWidth={2}
+              size={DEFAULT_ICON_SIZE}
+              strokeWidth={DEFAULT_STROKE_WIDTH}
               className="text-primary"
               aria-hidden="true"
             />

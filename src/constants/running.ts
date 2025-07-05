@@ -1,3 +1,6 @@
+import { SECONDS_PER_MINUTE } from "./time";
+import { MIN_PROGRAM_WEEKS, YEAR_IN_WEEKS } from "./training";
+
 // Running-related constants and types
 export type DistanceValue =
   | "5km"
@@ -26,12 +29,12 @@ export const FINISH_TIME_RANGES: Record<
   DistanceValue,
   { min: number; max: number }
 > = {
-  "5km": { min: 15 * 60, max: 60 * 60 },
-  "10km": { min: 30 * 60, max: 120 * 60 },
-  halfmarathon: { min: 60 * 60, max: 240 * 60 },
-  marathon: { min: 120 * 60, max: 420 * 60 },
+  "5km": { min: 15 * SECONDS_PER_MINUTE, max: 60 * SECONDS_PER_MINUTE },
+  "10km": { min: 30 * SECONDS_PER_MINUTE, max: 120 * SECONDS_PER_MINUTE },
+  halfmarathon: { min: 60 * SECONDS_PER_MINUTE, max: 240 * SECONDS_PER_MINUTE },
+  marathon: { min: 120 * SECONDS_PER_MINUTE, max: 420 * SECONDS_PER_MINUTE },
   none: { min: 0, max: 0 }, // Not used but required for type safety
 };
 
-export const MIN_WEEKS = 4;
-export const MAX_WEEKS = 48;
+export const MIN_WEEKS = MIN_PROGRAM_WEEKS;
+export const MAX_WEEKS = YEAR_IN_WEEKS;
