@@ -1,6 +1,6 @@
 // Simple PDF parser for structured program PDFs
 
-import { SimpleProgram, ParsedProgram, Week, Day, Exercise, ProgramDifficulty, ProgramType } from '../types/simpleProgram';
+import { SimpleProgram, ParsedProgram, Week, Day, Exercise, ProgramDifficulty, ProgramType, ProgramMetadata } from '../types/simpleProgram';
 
 export function parseSimplePDF(pdfText: string): ParsedProgram {
   const errors: string[] = [];
@@ -58,8 +58,8 @@ export function parseSimplePDF(pdfText: string): ParsedProgram {
   }
 }
 
-function parseMetadata(lines: string[], errors: string[]) {
-  const metadata: any = {
+function parseMetadata(lines: string[], errors: string[]): ProgramMetadata | null {
+  const metadata: Partial<ProgramMetadata> = {
     equipment: []
   };
 
@@ -99,7 +99,7 @@ function parseMetadata(lines: string[], errors: string[]) {
   if (!metadata.difficulty) errors.push('Program difficulty is required');
   if (!metadata.type) errors.push('Program type is required');
 
-  return errors.length > 0 ? null : metadata;
+  return errors.length > 0 ? null : metadata as ProgramMetadata;
 }
 
 function parseWeeks(lines: string[], errors: string[], warnings: string[]): Week[] {
@@ -229,7 +229,7 @@ export function validateSimpleProgram(program: SimpleProgram): { isValid: boolea
     }
 
     // Validate each week
-    program.weeks.forEach((week, weekIndex) => {
+    program.weeks.forEach((week) => {
       if (!week.days || week.days.length === 0) {
         warnings.push(`Week ${week.number} has no days`);
       }

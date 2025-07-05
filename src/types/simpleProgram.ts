@@ -84,17 +84,3 @@ export interface ProgramTemplate {
   sampleWeek: Week;
 }
 
-// Export types for easy importing
-export type {
-  ProgramDifficulty,
-  ProgramType,
-  Exercise,
-  Day,
-  Week,
-  ProgramMetadata,
-  SimpleProgram,
-  UserProgress,
-  DayCompletion,
-  ParsedProgram,
-  ProgramTemplate
-};
