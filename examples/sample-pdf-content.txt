@@ -1,0 +1,83 @@
+PROGRAM: Simple Strength Starter
+DURATION: 3 weeks
+DIFFICULTY: beginner
+TYPE: strength
+EQUIPMENT: dumbbells, yoga mat
+
+WEEK 1:
+DAY 1: Upper Body
+- Push-ups: 2 sets x 5 reps
+- Dumbbell Rows: 2 sets x 8 reps
+- Shoulder Press: 2 sets x 6 reps
+- Plank: 2 sets x 15 seconds
+
+DAY 2: REST
+
+DAY 3: Lower Body
+- Squats: 2 sets x 8 reps
+- Lunges: 2 sets x 6 reps each leg
+- Glute Bridges: 2 sets x 10 reps
+- Wall Sit: 2 sets x 20 seconds
+
+DAY 4: REST
+
+DAY 5: Full Body
+- Burpees: 2 sets x 3 reps
+- Mountain Climbers: 2 sets x 10 reps
+- Dead Bug: 2 sets x 5 reps each side
+
+DAY 6: REST
+
+DAY 7: REST
+
+WEEK 2:
+DAY 1: Upper Body
+- Push-ups: 3 sets x 6 reps
+- Dumbbell Rows: 3 sets x 8 reps
+- Shoulder Press: 3 sets x 6 reps
+- Plank: 3 sets x 20 seconds
+
+DAY 2: REST
+
+DAY 3: Lower Body
+- Squats: 3 sets x 10 reps
+- Lunges: 3 sets x 8 reps each leg
+- Glute Bridges: 3 sets x 12 reps
+- Wall Sit: 3 sets x 25 seconds
+
+DAY 4: REST
+
+DAY 5: Full Body
+- Burpees: 3 sets x 4 reps
+- Mountain Climbers: 3 sets x 15 reps
+- Dead Bug: 3 sets x 6 reps each side
+
+DAY 6: REST
+
+DAY 7: REST
+
+WEEK 3:
+DAY 1: Upper Body
+- Push-ups: 3 sets x 8 reps
+- Dumbbell Rows: 3 sets x 10 reps
+- Shoulder Press: 3 sets x 8 reps
+- Plank: 3 sets x 30 seconds
+
+DAY 2: REST
+
+DAY 3: Lower Body
+- Squats: 3 sets x 12 reps
+- Lunges: 3 sets x 10 reps each leg
+- Glute Bridges: 3 sets x 15 reps
+- Wall Sit: 3 sets x 30 seconds
+
+DAY 4: REST
+
+DAY 5: Full Body
+- Burpees: 3 sets x 5 reps
+- Mountain Climbers: 3 sets x 20 reps
+- Dead Bug: 3 sets x 8 reps each side
+
+DAY 6: REST
+
+DAY 7: REST

@@ -1,0 +1,317 @@
+{
+  "id": "nike-5k-training-v1",
+  "metadata": {
+    "name": "Nike 5K Training Program",
+    "description": "An 8-week Audio Guided Run 5K Training Program that combines speed, endurance, recovery and motivation to get you ready to tackle a 5K.",
+    "duration": 8,
+    "difficulty": "intermediate",
+    "type": "running",
+    "author": "Nike Run Club",
+    "source": "1751483840372-nikerun.pdf",
+    "goals": [
+      "Complete a 5K race",
+      "Improve running speed and endurance",
+      "Build consistent running habit"
+    ],
+    "prerequisites": [
+      "Ability to run for at least 5 minutes continuously",
+      "No major injuries",
+      "Basic fitness level"
+    ],
+    "equipment": [
+      "Running shoes",
+      "Nike Run Club app (optional)",
+      "Smartphone or GPS watch"
+    ],
+    "tags": ["running", "5k", "beginner-friendly", "audio-guided"]
+  },
+  "weeks": [
+    {
+      "id": "week-8",
+      "number": 8,
+      "name": "8 Weeks to Go",
+      "phase": "Base Building",
+      "focus": "Introduction to speed work and building base fitness",
+      "workouts": [
+        {
+          "id": "week8-day1",
+          "name": "5 Minute Recovery Run",
+          "type": "recovery",
+          "day": 1,
+          "duration": 5,
+          "description": "Easy paced recovery run to start building your base",
+          "warmup": [],
+          "mainExercises": [
+            {
+              "id": "recovery-run-5min",
+              "name": "Recovery Run",
+              "duration": 300,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "4-5 out of 10 effort. A pace easy enough that you can talk, laugh or argue freely while running."
+              },
+              "notes": "Use the Nike Run Club 5 Minute Run guided audio",
+              "order": 1
+            }
+          ],
+          "cooldown": [],
+          "notes": "NRC Guided Run: 5 Minute Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week8-day2",
+          "name": "First Speed Run",
+          "type": "speed",
+          "day": 2,
+          "duration": 20,
+          "description": "Introduction to interval training with 5K pace work",
+          "warmup": [
+            {
+              "id": "warmup-easy",
+              "name": "Easy Warm-up",
+              "duration": 600,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "Easy pace to prepare for intervals"
+              },
+              "order": 1
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "speed-intervals-8x1min",
+              "name": "Speed Intervals",
+              "sets": 8,
+              "duration": 60,
+              "rest": 60,
+              "intensity": {
+                "type": "pace",
+                "value": "5k",
+                "description": "7-8 out of 10 effort. The pace you could race or run hard for about 3 miles."
+              },
+              "notes": "8 x 1:00 at 5K Pace with 1:00 recovery between all intervals",
+              "order": 1
+            }
+          ],
+          "cooldown": [
+            {
+              "id": "cooldown-easy",
+              "name": "Easy Cool-down",
+              "duration": 300,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "Easy pace to cool down"
+              },
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: First Speed Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week8-day3",
+          "name": "7 Minute Recovery Run",
+          "type": "recovery",
+          "day": 3,
+          "duration": 7,
+          "description": "Recovery run to help body adapt to training stress",
+          "mainExercises": [
+            {
+              "id": "recovery-run-7min",
+              "name": "Recovery Run",
+              "duration": 420,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "4-5 out of 10 effort"
+              },
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: 7 Minute Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week8-day4",
+          "name": "Next Speed Run",
+          "type": "speed",
+          "day": 4,
+          "duration": 25,
+          "description": "Progressive speed workout building to best pace",
+          "warmup": [
+            {
+              "id": "warmup-structured",
+              "name": "Structured Warm-up",
+              "duration": 300,
+              "order": 1
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "progressive-intervals",
+              "name": "Progressive Speed Intervals",
+              "notes": "1:00 5K Pace, 2:00 10K Pace, 1:00 5K Pace, 2x0:45 Mile Pace, 2:00 10K Pace, 1:00 5K Pace, 0:45 Mile Pace, 0:30 Best Pace, 0:15 Best Pace with 1:00 recovery between all intervals",
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: Next Speed Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week8-day5",
+          "name": "One Mile Run",
+          "type": "long",
+          "day": 5,
+          "duration": 15,
+          "description": "Build endurance with your first longer run",
+          "mainExercises": [
+            {
+              "id": "one-mile-run",
+              "name": "One Mile Long Run",
+              "distance": 1609,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "Run as a progression run, starting slower than recovery pace and finishing faster"
+              },
+              "notes": "1.6k/One Mile Run - run as progression",
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: One Mile Run",
+          "equipment": ["running_shoes"]
+        }
+      ],
+      "restDays": [6, 7],
+      "notes": "First week focuses on introducing speed work and building base endurance"
+    },
+    {
+      "id": "week-7",
+      "number": 7,
+      "name": "7 Weeks to Go",
+      "phase": "Base Building",
+      "focus": "Continued speed development and longer recovery runs",
+      "workouts": [
+        {
+          "id": "week7-day1",
+          "name": "Ten Minute Run",
+          "type": "recovery",
+          "day": 1,
+          "duration": 10,
+          "mainExercises": [
+            {
+              "id": "recovery-run-10min",
+              "name": "Recovery Run",
+              "duration": 600,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "4-5 out of 10 effort"
+              },
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: Ten Minute Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week7-day2",
+          "name": "On the Move",
+          "type": "speed",
+          "day": 2,
+          "duration": 22,
+          "description": "Mixed pace intervals building speed endurance",
+          "warmup": [
+            {
+              "id": "warmup-5min",
+              "name": "Warm-up",
+              "duration": 300,
+              "order": 1
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "mixed-pace-intervals",
+              "name": "Mixed Pace Intervals",
+              "notes": "0:30 Mile Pace, 1:00 5K Pace, 0:30 Mile Pace, 2:00 10K Pace, 0:30 Mile Pace, 1:00 5K Pace, 0:30 Mile Pace with 45 seconds recovery between all intervals",
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: On the Move",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week7-day3",
+          "name": "12 Minute Run",
+          "type": "recovery",
+          "day": 3,
+          "duration": 12,
+          "mainExercises": [
+            {
+              "id": "recovery-run-12min",
+              "name": "Recovery Run",
+              "duration": 720,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "4-5 out of 10 effort"
+              },
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: 12 Minute Run",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week7-day4",
+          "name": "Faster Fun",
+          "type": "speed",
+          "day": 4,
+          "duration": 25,
+          "description": "Progressive speed building to best effort",
+          "mainExercises": [
+            {
+              "id": "faster-fun-intervals",
+              "name": "Progressive Speed Intervals",
+              "notes": "2:00 Mile Pace, 0:30 10K Pace, 1:30 Mile Pace, 0:30 10K Pace, 1:00 Mile Pace, 0:30 10K Pace, 1:00 Mile Pace, 0:30 10K Pace, 0:30 Best Pace with 30 seconds recovery between all intervals",
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: Faster Fun",
+          "equipment": ["running_shoes"]
+        },
+        {
+          "id": "week7-day5",
+          "name": "15 Minute Run",
+          "type": "long",
+          "day": 5,
+          "duration": 15,
+          "mainExercises": [
+            {
+              "id": "fifteen-minute-run",
+              "name": "15 Minute Long Run",
+              "duration": 900,
+              "intensity": {
+                "type": "pace",
+                "value": "recovery",
+                "description": "Run as progression"
+              },
+              "order": 1
+            }
+          ],
+          "notes": "NRC Guided Run: 15 Minute Run",
+          "equipment": ["running_shoes"]
+        }
+      ],
+      "restDays": [6, 7],
+      "notes": "Building on week 8 with longer runs and more complex speed work"
+    }
+  ],
+  "totalWorkouts": 10,
+  "estimatedTimePerWeek": 84,
+  "notes": "This program includes Audio Guided Runs for every workout. Users can choose to run with guidance or alone. The plan is designed to be flexible and adapt to your experience level.",
+  "version": "1.0"
+}

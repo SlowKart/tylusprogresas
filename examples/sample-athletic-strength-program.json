@@ -1,0 +1,392 @@
+{
+  "id": "reload-athletic-strength-v1",
+  "metadata": {
+    "name": "12 Week Athletic Strength and Power Program - RELOAD",
+    "description": "A three-phase, 12-week athletic strength and power program designed to build foundational strength, develop power, and achieve peak athletic performance.",
+    "duration": 12,
+    "difficulty": "intermediate",
+    "type": "strength",
+    "author": "Mikayla Mailhes NASM CPT, BS ES",
+    "source": "1751618883490-reload.pdf",
+    "goals": [
+      "Build foundational strength and hypertrophy",
+      "Develop explosive power and athleticism",
+      "Achieve peak strength performance",
+      "Improve movement quality and durability"
+    ],
+    "prerequisites": [
+      "6+ months of consistent training experience",
+      "Proper form on basic compound movements",
+      "No current injuries",
+      "Access to full gym equipment"
+    ],
+    "equipment": [
+      "Barbells and plates",
+      "Dumbbells",
+      "Kettlebells",
+      "Cable machines",
+      "Landmine attachment",
+      "Trap bar",
+      "Plyo boxes",
+      "Medicine balls",
+      "Resistance bands",
+      "Stability ball"
+    ],
+    "tags": ["strength", "power", "athletic", "3-phase", "advanced"]
+  },
+  "phases": [
+    {
+      "id": "phase-1",
+      "number": 1,
+      "name": "Foundational Strength + Hypertrophy",
+      "focus": "Building base strength with functional hypertrophy rep ranges",
+      "description": "The first 4 weeks of this program is designed as a base building of high-end strength reps with functional hypertrophy rep ranges. The goal is to build a foundation of strength and build some confidence under the bar.",
+      "startWeek": 1,
+      "endWeek": 4,
+      "weeks": [],
+      "notes": "Focus on form and technique. Mix of strength, endurance, durability, and hypertrophy."
+    },
+    {
+      "id": "phase-2", 
+      "number": 2,
+      "name": "Strength + Power",
+      "focus": "Wave-loading strength training with explosive dynamic work",
+      "description": "After our first phase, reps will be lowered to allow for a greater load to be used. Utilizes wave-loading system to manipulate reps and excite the nervous system.",
+      "startWeek": 5,
+      "endWeek": 8,
+      "weeks": [],
+      "notes": "Dynamic effort focuses on speed-strength and lifting sub-maximal weight with maximum speed."
+    },
+    {
+      "id": "phase-3",
+      "number": 3,
+      "name": "Contrast + Peak Strength", 
+      "focus": "Contrast training and maximum effort strength development",
+      "description": "Contrast training pairs heavy lifts with explosive movements. Peak strength days focus on maximum effort with low reps.",
+      "startWeek": 9,
+      "endWeek": 12,
+      "weeks": [],
+      "notes": "Final phase taps into high-threshold motor units for ultimate strength and power gains."
+    }
+  ],
+  "weeks": [
+    {
+      "id": "week-1",
+      "number": 1,
+      "name": "Week 1-2",
+      "phase": "Foundational Strength + Hypertrophy",
+      "focus": "Base building with moderate volume",
+      "workouts": [
+        {
+          "id": "week1-day1",
+          "name": "Lower Body Strength + Durability",
+          "type": "strength",
+          "day": 1,
+          "duration": 75,
+          "description": "Focus on building lower body strength foundation",
+          "warmup": [
+            {
+              "id": "lower-warmup",
+              "name": "Lower Body Warm-up",
+              "notes": "Foam Roll, Dynamic Lunge, Scorpions, Bootstraps, Leg Swings, Walking Knee Hug (8-10 reps each)",
+              "order": 1
+            },
+            {
+              "id": "cns-prep",
+              "name": "CNS Prep",
+              "sets": 3,
+              "reps": "6",
+              "notes": "Box Jump",
+              "order": 2
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "pause-trap-bar-dl",
+              "name": "Pause Trap Bar Deadlift",
+              "sets": 4,
+              "reps": "6",
+              "rest": 60,
+              "intensity": {
+                "type": "rpe",
+                "value": "7-8",
+                "description": "Could do 1-2 more reps"
+              },
+              "notes": "Focus on pause at bottom position",
+              "equipment": ["trap_bar", "plates"],
+              "order": 1
+            },
+            {
+              "id": "depth-drop-vertical-jump", 
+              "name": "Depth Drop + Vertical Jump",
+              "sets": 4,
+              "reps": "5",
+              "rest": 60,
+              "notes": "Superset with A1. Step off box, land, and immediately jump vertically",
+              "equipment": ["plyo_box"],
+              "order": 2
+            },
+            {
+              "id": "eccentric-zercher-squat",
+              "name": "Eccentric Zercher Squat", 
+              "sets": 3,
+              "reps": "10",
+              "rest": 60,
+              "intensity": {
+                "type": "descriptive",
+                "value": "controlled eccentric",
+                "description": "3-4 second lower, explosive up"
+              },
+              "equipment": ["barbell", "plates"],
+              "order": 3
+            },
+            {
+              "id": "heel-elevated-wall-sit",
+              "name": "Heel Elevated Wall Sit",
+              "sets": 3,
+              "reps": "15-20 seconds",
+              "rest": 60,
+              "notes": "Superset with B1",
+              "equipment": ["wall"],
+              "order": 4
+            },
+            {
+              "id": "rnt-split-squat",
+              "name": "RNT Split Squat",
+              "sets": 3,
+              "reps": "8 each side",
+              "rest": 60,
+              "notes": "Reactive neuromuscular training with band resistance",
+              "equipment": ["resistance_band"],
+              "order": 5
+            },
+            {
+              "id": "db-lateral-lunge",
+              "name": "DB Lateral Lunge",
+              "sets": 3,
+              "reps": "10 each side",
+              "rest": 60,
+              "notes": "Superset with C1",
+              "equipment": ["dumbbells"],
+              "order": 6
+            },
+            {
+              "id": "stability-ball-hamstring-curls",
+              "name": "Stability Ball Hamstring Curls",
+              "sets": 3,
+              "reps": "10",
+              "rest": 60,
+              "equipment": ["stability_ball"],
+              "order": 7
+            },
+            {
+              "id": "sl-stability-ball-iso",
+              "name": "Single Leg Stability Ball ISO Hold",
+              "sets": 3,
+              "reps": "30-40 seconds",
+              "rest": 60,
+              "notes": "Superset with D1",
+              "equipment": ["stability_ball"],
+              "order": 8
+            }
+          ],
+          "cooldown": [],
+          "notes": "Focus on building movement quality and strength foundation",
+          "equipment": ["trap_bar", "plates", "dumbbells", "resistance_bands", "stability_ball", "plyo_box"]
+        },
+        {
+          "id": "week1-day2",
+          "name": "Upper Body Strength + Durability",
+          "type": "strength", 
+          "day": 2,
+          "duration": 75,
+          "description": "Upper body strength focus with durability components",
+          "warmup": [
+            {
+              "id": "upper-warmup",
+              "name": "Upper Body Warm-up",
+              "notes": "Foam Roll, Banded Shoulder Openers, Thread The Needle + T-Spine Rotation, Superman Reaches, Inch Worms to Cobra (8-10 reps each)",
+              "order": 1
+            },
+            {
+              "id": "cns-prep-upper",
+              "name": "CNS Prep",
+              "sets": 3,
+              "reps": "10",
+              "notes": "Ballistic Banded Rows",
+              "order": 2
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "eccentric-bb-floor-press",
+              "name": "Eccentric BB Floor Press",
+              "sets": 4,
+              "reps": "8",
+              "rest": 90,
+              "intensity": {
+                "type": "descriptive",
+                "value": "controlled eccentric",
+                "description": "3-4 second lower, pause on floor, explosive up"
+              },
+              "equipment": ["barbell", "plates"],
+              "order": 1
+            },
+            {
+              "id": "inverted-row",
+              "name": "Inverted Row",
+              "sets": 4,
+              "reps": "6",
+              "rest": 60,
+              "notes": "Superset with A1",
+              "equipment": ["barbell", "rack"],
+              "order": 2
+            },
+            {
+              "id": "lat-pulldown-iso",
+              "name": "Lat Pulldown + Isometric Hold",
+              "sets": 3,
+              "reps": "10 + 10 sec hold",
+              "rest": 60,
+              "equipment": ["cable_machine"],
+              "order": 3
+            },
+            {
+              "id": "eccentric-push-up",
+              "name": "Eccentric Push Up",
+              "sets": 4,
+              "reps": "AMRAP",
+              "rest": 60,
+              "notes": "Superset with B1. Slow eccentric, explosive concentric",
+              "equipment": ["bodyweight"],
+              "order": 4
+            },
+            {
+              "id": "tall-kneeling-landmine-press",
+              "name": "Tall Kneeling Bana Landmine Push Press",
+              "sets": 3,
+              "reps": "5 each",
+              "rest": 60,
+              "equipment": ["landmine", "plates"],
+              "order": 5
+            },
+            {
+              "id": "half-kneeling-lateral-raises",
+              "name": "Half Kneeling Alt Lateral Raises",
+              "sets": 3,
+              "reps": "6 each",
+              "rest": 60,
+              "notes": "Superset with C1",
+              "equipment": ["dumbbells"],
+              "order": 6
+            },
+            {
+              "id": "bird-dog-row",
+              "name": "Bird Dog Row",
+              "sets": 3,
+              "reps": "8 each",
+              "rest": 30,
+              "equipment": ["dumbbells"],
+              "order": 7
+            },
+            {
+              "id": "sl-sa-db-press",
+              "name": "SL SA DB Press",
+              "sets": 3,
+              "reps": "8 each",
+              "rest": 30,
+              "notes": "Superset with D1. Single leg, single arm",
+              "equipment": ["dumbbells"],
+              "order": 8
+            }
+          ],
+          "cooldown": [],
+          "notes": "Focus on upper body strength and unilateral stability",
+          "equipment": ["barbell", "plates", "dumbbells", "cable_machine", "landmine", "resistance_bands"]
+        },
+        {
+          "id": "week1-day3",
+          "name": "Sprints and Core",
+          "type": "conditioning",
+          "day": 3,
+          "duration": 45,
+          "description": "Sprint intervals and core strengthening",
+          "warmup": [
+            {
+              "id": "conditioning-warmup",
+              "name": "Conditioning Warm-up",
+              "notes": "Full Body Foam Roll, Ankle Grab SL Leg Reach, Adductor T-Spine Rotation, Alt Greatest Stretch, Wall Tibialis Raise, Heelscoops",
+              "order": 1
+            },
+            {
+              "id": "cns-prep-conditioning",
+              "name": "CNS Prep",
+              "sets": 2,
+              "reps": "20",
+              "notes": "Lateral Pogo Hops",
+              "order": 2
+            }
+          ],
+          "mainExercises": [
+            {
+              "id": "bike-sprints",
+              "name": "Bike Sprints",
+              "sets": 8,
+              "duration": 10,
+              "rest": 50,
+              "notes": "10 seconds on, 50 seconds rest. Alternative to treadmill sprints",
+              "equipment": ["stationary_bike"],
+              "order": 1
+            },
+            {
+              "id": "copenhagen-plank",
+              "name": "Copenhagen Plank",
+              "sets": 3,
+              "reps": "20 seconds each",
+              "rest": 30,
+              "equipment": ["bench"],
+              "order": 2
+            },
+            {
+              "id": "mb-pallof-rotations",
+              "name": "MB Pallof Banded Rotations",
+              "sets": 3,
+              "reps": "10 each",
+              "rest": 30,
+              "notes": "Superset with A1",
+              "equipment": ["medicine_ball", "resistance_band"],
+              "order": 3
+            },
+            {
+              "id": "banded-front-rack-marches",
+              "name": "Banded Pause Front Rack Marches",
+              "sets": 3,
+              "reps": "35 seconds",
+              "rest": 30,
+              "equipment": ["resistance_band", "dumbbells"],
+              "order": 4
+            },
+            {
+              "id": "heavy-farmers-carry",
+              "name": "Heavy Farmers Carry",
+              "sets": 3,
+              "reps": "45 seconds",
+              "rest": 60,
+              "equipment": ["dumbbells", "kettlebells"],
+              "order": 5
+            }
+          ],
+          "cooldown": [],
+          "notes": "Focus on sprint performance and functional core strength. Walk, slow pedal, or stand during rest periods.",
+          "equipment": ["stationary_bike", "treadmill", "medicine_ball", "resistance_bands", "dumbbells", "kettlebells", "bench"]
+        }
+      ],
+      "restDays": [4, 6, 7],
+      "notes": "First week of foundational phase. Focus on movement quality and building work capacity."
+    }
+  ],
+  "totalWorkouts": 36,
+  "estimatedTimePerWeek": 300,
+  "notes": "This program requires access to a full commercial gym. Each phase has a specific focus and builds upon the previous phase. Nutrition and recovery are equally important as the training itself.",
+  "version": "1.0"
+}

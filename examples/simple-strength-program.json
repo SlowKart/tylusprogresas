@@ -1,0 +1,286 @@
+{
+  "id": "basic-strength-v1",
+  "metadata": {
+    "name": "Basic Strength Training",
+    "duration": 3,
+    "difficulty": "beginner",
+    "type": "strength",
+    "equipment": ["dumbbells", "yoga mat"],
+    "description": "A simple 3-week strength program for beginners"
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Body",
+          "exercises": [
+            {
+              "name": "Push-ups",
+              "details": "2 sets x 8 reps"
+            },
+            {
+              "name": "Dumbbell Rows",
+              "details": "2 sets x 10 reps"
+            },
+            {
+              "name": "Shoulder Press",
+              "details": "2 sets x 8 reps"
+            },
+            {
+              "name": "Plank",
+              "details": "2 sets x 20 seconds"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Lower Body",
+          "exercises": [
+            {
+              "name": "Squats",
+              "details": "2 sets x 10 reps"
+            },
+            {
+              "name": "Lunges",
+              "details": "2 sets x 8 reps each leg"
+            },
+            {
+              "name": "Glute Bridges",
+              "details": "2 sets x 12 reps"
+            },
+            {
+              "name": "Calf Raises",
+              "details": "2 sets x 15 reps"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Full Body",
+          "exercises": [
+            {
+              "name": "Burpees",
+              "details": "2 sets x 5 reps"
+            },
+            {
+              "name": "Mountain Climbers",
+              "details": "2 sets x 20 reps"
+            },
+            {
+              "name": "Dead Bug",
+              "details": "2 sets x 8 reps each side"
+            },
+            {
+              "name": "Wall Sit",
+              "details": "2 sets x 30 seconds"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Body",
+          "exercises": [
+            {
+              "name": "Push-ups",
+              "details": "3 sets x 8 reps"
+            },
+            {
+              "name": "Dumbbell Rows",
+              "details": "3 sets x 10 reps"
+            },
+            {
+              "name": "Shoulder Press",
+              "details": "3 sets x 8 reps"
+            },
+            {
+              "name": "Plank",
+              "details": "3 sets x 25 seconds"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Lower Body",
+          "exercises": [
+            {
+              "name": "Squats",
+              "details": "3 sets x 10 reps"
+            },
+            {
+              "name": "Lunges",
+              "details": "3 sets x 8 reps each leg"
+            },
+            {
+              "name": "Glute Bridges",
+              "details": "3 sets x 12 reps"
+            },
+            {
+              "name": "Calf Raises",
+              "details": "3 sets x 15 reps"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Full Body",
+          "exercises": [
+            {
+              "name": "Burpees",
+              "details": "3 sets x 6 reps"
+            },
+            {
+              "name": "Mountain Climbers",
+              "details": "3 sets x 25 reps"
+            },
+            {
+              "name": "Dead Bug",
+              "details": "3 sets x 10 reps each side"
+            },
+            {
+              "name": "Wall Sit",
+              "details": "3 sets x 35 seconds"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Body",
+          "exercises": [
+            {
+              "name": "Push-ups",
+              "details": "3 sets x 10 reps"
+            },
+            {
+              "name": "Dumbbell Rows",
+              "details": "3 sets x 12 reps"
+            },
+            {
+              "name": "Shoulder Press",
+              "details": "3 sets x 10 reps"
+            },
+            {
+              "name": "Plank",
+              "details": "3 sets x 30 seconds"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Lower Body",
+          "exercises": [
+            {
+              "name": "Squats",
+              "details": "3 sets x 12 reps"
+            },
+            {
+              "name": "Lunges",
+              "details": "3 sets x 10 reps each leg"
+            },
+            {
+              "name": "Glute Bridges",
+              "details": "3 sets x 15 reps"
+            },
+            {
+              "name": "Calf Raises",
+              "details": "3 sets x 20 reps"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Full Body",
+          "exercises": [
+            {
+              "name": "Burpees",
+              "details": "3 sets x 8 reps"
+            },
+            {
+              "name": "Mountain Climbers",
+              "details": "3 sets x 30 reps"
+            },
+            {
+              "name": "Dead Bug",
+              "details": "3 sets x 12 reps each side"
+            },
+            {
+              "name": "Wall Sit",
+              "details": "3 sets x 45 seconds"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    }
+  ]
+}

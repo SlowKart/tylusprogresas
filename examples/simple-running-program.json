@@ -1,0 +1,265 @@
+{
+  "id": "beginner-5k-v1",
+  "metadata": {
+    "name": "Beginner 5K Training",
+    "duration": 4,
+    "difficulty": "beginner",
+    "type": "running",
+    "equipment": ["running shoes"],
+    "description": "A simple 4-week program to build up to running a 5K"
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "days": [
+        {
+          "day": 1,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "15 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Walk/Run Intervals",
+          "exercises": [
+            {
+              "name": "Warm-up",
+              "details": "5 minutes walk"
+            },
+            {
+              "name": "Intervals",
+              "details": "8 x 1 minute run, 2 minutes walk"
+            },
+            {
+              "name": "Cool-down",
+              "details": "5 minutes walk"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "20 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "days": [
+        {
+          "day": 1,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "20 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Run Intervals",
+          "exercises": [
+            {
+              "name": "Warm-up",
+              "details": "5 minutes easy run"
+            },
+            {
+              "name": "Intervals",
+              "details": "6 x 2 minutes run, 1 minute walk"
+            },
+            {
+              "name": "Cool-down",
+              "details": "5 minutes walk"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "25 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "25 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Run Intervals",
+          "exercises": [
+            {
+              "name": "Warm-up",
+              "details": "5 minutes easy run"
+            },
+            {
+              "name": "Intervals",
+              "details": "5 x 3 minutes run, 1 minute walk"
+            },
+            {
+              "name": "Cool-down",
+              "details": "5 minutes walk"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "Long Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "30 minutes steady pace"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Easy Run",
+          "exercises": [
+            {
+              "name": "Run",
+              "details": "20 minutes easy pace"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 3,
+          "name": "Short Intervals",
+          "exercises": [
+            {
+              "name": "Warm-up",
+              "details": "5 minutes easy run"
+            },
+            {
+              "name": "Intervals",
+              "details": "4 x 1 minute fast, 2 minutes easy"
+            },
+            {
+              "name": "Cool-down",
+              "details": "5 minutes walk"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 5,
+          "name": "5K Test",
+          "exercises": [
+            {
+              "name": "5K Run",
+              "details": "race pace"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "REST",
+          "exercises": []
+        },
+        {
+          "day": 7,
+          "name": "REST",
+          "exercises": []
+        }
+      ]
+    }
+  ]
+}
