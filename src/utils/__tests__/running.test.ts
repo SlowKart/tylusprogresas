@@ -99,15 +99,15 @@ describe("running utils", () => {
     });
 
     it("returns one of the known workouts", () => {
-      const workout = runningUtils.getRandomWorkout();
-      const knownWorkouts = [
-        "Run 5km at a comfortable pace. Cool down with 10 minutes of stretching.",
-        "Interval session: 10x 400m fast with 200m walk/jog recovery.",
-        "Tempo run: 20 minutes at a steady, challenging pace.",
-        "Hill repeats: 8x 1-minute uphill, walk down for recovery.",
-        "Long run: 60 minutes at an easy pace. Hydrate well!",
+      const workout = runningUtils.getRandomWorkout("beginner");
+      const beginnerWorkouts = [
+        "Run 20-30 minutes at a comfortable pace. Take walking breaks if needed.",
+        "Walk-run intervals: 2 minutes running, 1 minute walking. Repeat 8 times.",
+        "Easy 3km jog followed by 10 minutes of stretching.",
+        "Hill walk: Find a gentle slope and walk up, jog down slowly. Repeat 6 times.",
+        "Easy pace run for 25 minutes. Focus on breathing and posture.",
       ];
-      expect(knownWorkouts).toContain(workout);
+      expect(beginnerWorkouts).toContain(workout);
     });
 
     it("returns different workouts on multiple calls", () => {

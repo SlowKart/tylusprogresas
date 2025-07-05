@@ -31,6 +31,12 @@ Object.defineProperty(Element.prototype, "releasePointerCapture", {
   writable: true,
 });
 
+// Mock scrollIntoView for Radix components
+Object.defineProperty(Element.prototype, "scrollIntoView", {
+  value: vi.fn(),
+  writable: true,
+});
+
 // Mock Next.js navigation
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), prefetch: vi.fn() }),
