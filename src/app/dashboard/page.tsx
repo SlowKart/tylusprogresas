@@ -48,7 +48,7 @@ export default function DashboardPage() {
   };
 
   const handleChooseProgram = () => {
-    router.push("/");
+    router.push("/?choosing=true");
   };
 
   const formatSportType = (sportType: string): string => {
