@@ -19,7 +19,7 @@ export const DISTANCES: DistanceOption[] = [
   { label: "10 km", value: "10km", km: 10 },
   { label: "Half Marathon", value: "halfmarathon", km: 21.0975 },
   { label: "Marathon", value: "marathon", km: 42.195 },
-  { label: "No Specific Goal", value: "none", km: 0 },
+  { label: "I just want to run", value: "none", km: 0 },
 ];
 
 export const FINISH_TIME_RANGES: Record<
